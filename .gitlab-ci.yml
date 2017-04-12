@@ -1,0 +1,38 @@
+# Phase 5
+before_script:
+# Check for common problems
+  - echo -e "\e[33m+------------------------------+\n|   CHECKING FOR COMMON PROBLEMS   |\n+------------------------------+\e[0m"
+  - if [ -r ./Gemfile ] && [ -d ./app ] && [ -d ./db ] && [ -d ./config ]; then true; else echo -e "\e[31mYour rails app should not be in a subfolder! You may have made the git repo one folder up from where the rails app is (for example you did rails new phase_x and then git init and you forgot to cd into the phase_x folder first before git init. See a Head TA or Prof H *IMMEDIATELY* to fix this if you don't know how.\e[0m" && exit 1; fi
+  - if [ -d ./app/channels ]; then echo -e "\e[31mYou generated your rails app using rails 5 instead of rails 4.2.7 or 4.2.6. Look at your Gemfile to see which version of rails you are using. If you think this is a mistake, delete the app/channels folder (don't do this unless you are 100% certain you are using rails 4). See a Head TA or Prof H IMMEDIATELY if you do not know how to fix this!\e[0m" && exit 1; else true; fi
+  - if egrep -q "class\s+ItemPrice" ./app/models/*.rb; then true; else echo -e "\e[31mYou named your ItemPrice model something else, it must be named exactly 'ItemPrice' (case sensitive) for our tests to work. You will have to regenerate your model, don't just change the name. Fix this IMMEDIATELY, see a Head TA or Prof H if you need help.\e[0m" && exit 1; fi
+  - if egrep -q "class\s+Item[^Pp_]" ./app/models/*.rb; then true; else echo -e "\e[31mYou named your Item model something else, it must be named exactly 'Item' (case sensitive) for our tests to work. You will have to regenerate your model, don't just change the name. Fix this IMMEDIATELY, see a Head TA or Prof H if you need help.\e[0m" && exit 1; fi
+  - if egrep -q "class\s+Purchase" ./app/models/*.rb; then true; else echo -e "\e[31mYou named your Purchase model something else, it must be named exactly 'Purchase' (case sensitive) for our tests to work. You will have to regenerate your model, don't just change the name. Fix this IMMEDIATELY, see a Head TA or Prof H if you need help.\e[0m" && exit 1; fi
+  - if egrep -q "class\s+School" ./app/models/*.rb; then true; else echo -e "\e[31mYou named your School model something else, it must be named exactly 'School' (case sensitive) for our tests to work. You will have to regenerate your model, don't just change the name. Fix this IMMEDIATELY, see a Head TA or Prof H if you need help.\e[0m" && exit 1; fi
+  - if egrep -q "class\s+User" ./app/models/*.rb; then true; else echo -e "\e[31mYou named your User model something else, it must be named exactly 'User' (case sensitive) for our tests to work. You will have to regenerate your model, don't just change the name. Fix this IMMEDIATELY, see a Head TA or Prof H if you need help.\e[0m" && exit 1; fi
+  - if egrep -q "class\s+OrderItem" ./app/models/*.rb; then true; else echo -e "\e[31mYou named your OrderItem model something else, it must be named exactly 'OrderItem' (case sensitive) for our tests to work. You will have to regenerate your model, don't just change the name. Fix this IMMEDIATELY, see a Head TA or Prof H if you need help.\e[0m" && exit 1; fi
+  - if egrep -q "class\s+Order[^Ii]" ./app/models/*.rb; then true; else echo -e "\e[31mYou named your Order model something else, it must be named exactly 'Order' (case sensitive) for our tests to work. You will have to regenerate your model, don't just change the name. Fix this IMMEDIATELY, see a Head TA or Prof H if you need help.\e[0m" && exit 1; fi
+# Print status
+  - echo -e "\e[33m+------------------------+\n|   SETTING UP PROJECT   |\n+------------------------+\e[0m"
+# Install gems the Docker image may not have
+  - bundle install --jobs $(nproc) "${FLAGS[@]}"
+# Set up the test database
+  - bundle exec rake db:migrate:reset RAILS_ENV=test
+
+test:
+  script:
+# Run their unit tests, return true so that even if their unit tests fail we can continue with their other tests
+    - echo -e "\e[33m+------------------------------+\n|   RUNNING THEIR UNIT TESTS   |\n+------------------------------+\e[0m"
+    - bundle exec rake test:units || true
+# Run their controller tests, return true so that even if their controller tests fail we can continue with their other tests
+    #echo -e "\e[33m+------------------------------------+\n|   RUNNING THEIR CONTROLLER TESTS   |\n+------------------------------------+\e[0m"
+    #bundle exec rake test:functionals || true
+# Run their controller tests, return if our solution project exists then continue on to that, otherwise return minitest's exit code
+    #echo -e "\e[33m+------------------------------+\n|   RUNNING THEIR VIEW TESTS   |\n+------------------------------+\e[0m"
+    #bundle exec cucumber || [ -d /home/sol ]
+# Do the same but replacing our test cases if they exist
+    - if [ -d /home/sol ]; then echo -e "\e[33m+----------------------------+\n|   RUNNING OUR UNIT TESTS   |\n+----------------------------+\e[0m"; fi
+    - if [ -d /home/sol ]; then rm -rf ./test && cp -r /home/sol/test ./ && bundle exec rake test:units; fi
+    #if [ -d /home/sol ]; then echo -e "\e[33m+----------------------------------+\n|   RUNNING OUR CONTROLLER TESTS   |\n+----------------------------------+\e[0m"; fi
+    #if [ -d /home/sol ]; then rm -rf ./features && cp -r /home/sol/features ./ && bundle exec rake test:functionals; fi
+    #if [ -d /home/sol ]; then echo -e "\e[33m+----------------------------+\n|   running OUR view tests   |\n+----------------------------+\e[0m"; fi
+    #if [ -d /home/sol ]; then bundle exec cucumber; fi
