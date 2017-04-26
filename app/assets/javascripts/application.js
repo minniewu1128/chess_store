@@ -15,6 +15,3 @@
 //= require foundation.min
 //= require_tree .
 
-$(function() {
-  $(document).foundation('topbar', 'reflow');
-});
