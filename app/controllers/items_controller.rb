@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
+    before_action :check_login, except: [:index, :show]
+
   def index
     # get info on active items for the big three...
     @boards = Item.active.for_category('boards').alphabetical.paginate(:page => params[:page]).per_page(10)

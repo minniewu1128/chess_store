@@ -44,7 +44,8 @@ class Ability
         end
 
     elsif user.role? :customer
-        can :read
+        can :read, Item
+        can :index, Item
         can :update, User do |u|
             u.id == user.id
         end
