@@ -3,7 +3,12 @@
   
     <!-- Item options dropdown -->
     <ul id="dropdown1" class="dropdown-content">
-      <li><%= link_to "Item List", items_path %></li>
+      <li><%= link_to "All", items_path %></li>
+      <li><%= link_to "Boards", index_boards_path %></li>
+      <li><%= link_to "Clocks", index_clocks_path %></li>
+      <li><%= link_to "Pieces", index_pieces_path  %></li>
+      <li><%= link_to "Supplies", index_supplies_path %></li>
+
       <!-- only show if manager or admin -->
       <% if logged_in? && (current_user.role?(:manager)||current_user.role?(:admin)) %>
         <li><%= link_to "Add an Item", new_item_path %></li>
@@ -14,15 +19,22 @@
     
       <!-- User profile options dropdown -->
       <ul id="dropdown2" class="dropdown-content">
-      <li><%= link_to "Profile", users_path(current_user) %></li>
-      <li><i class="small material-icons prefix">shopping_cart</i><%= link_to "Cart", reorder_list_path%></li>
+      <li><%= link_to users_path(current_user) do%>
+        <i class="small material-icons prefix">perm_identity</i> Profile
+        <%end%>
+      </li>
+
+      <li><%= link_to add_to_cart_path(1) do%>
+        <i class="small material-icons prefix">shopping_cart</i> Cart
+        <%end%>
+      </li>
       <li><%= link_to "Log Out", logout_path%></li>
     </ul>
 
     
     <nav class= "teal lighten-2">
     <div class = "nav-wrapper">
-      <a href="#" class="brand-logo">eChess</a>
+      <a href="#" class="brand-logo">AnM Chess</a>
     <!-- <section class="top-bar-section"> -->
       <!-- <ul class="left"> -->
      

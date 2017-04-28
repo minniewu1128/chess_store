@@ -8,6 +8,13 @@ Rails.application.routes.draw do
   resources :order_items
   resources :schools
   
+  # Additional Routes for Items
+
+  get 'boards' => 'items#index_boards', :as => :index_boards
+  get 'clocks' => 'items#index_clocks', :as => :index_clocks
+  get 'pieces' => 'items#index_pieces', :as => :index_pieces
+  get 'supplies' => 'items#index_supplies', :as => :index_supplies
+  
   #Routes for login and sessions
   resources :users
   resources :sessions

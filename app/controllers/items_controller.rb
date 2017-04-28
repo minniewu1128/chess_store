@@ -15,6 +15,24 @@ class ItemsController < ApplicationController
     @inactive_items = Item.inactive.alphabetical.to_a
   end
 
+  def index_boards
+    @boards = Item.active.for_category('boards').alphabetical.paginate(:page => params[:page]).per_page(10)
+  end
+
+  def index_pieces
+    @pieces = Item.active.for_category('pieces').alphabetical.paginate(:page => params[:page]).per_page(10)
+  end
+
+  def index_clocks
+    @clocks = Item.active.for_category('clocks').alphabetical.paginate(:page => params[:page]).per_page(10)
+  end
+
+
+  def index_supplies
+    @supplies = Item.active.for_category('supplies').alphabetical.paginate(:page => params[:page]).per_page(10)    
+  end
+
+
   def reorder_list
     @items_to_reorder = Item.need_reorder.alphabetical.to_a
   end

@@ -1,0 +1,26 @@
+<%= simple_form_for @user, html: { class: 'form-horizontal', multipart: true } do |f| %>
+    
+    <%if !logged_in?%>
+      <h1>Sign Up</h1>
+    <% else %>
+      <h1>Add a New User</h1>
+    <% end %>
+    
+    <div class ="row">
+        <%= f.input :username, input_html: {class: "avg"}, wrapper_html: { class: 'input-field' } %>
+
+       
+    
+        <%= f.input :first_name, input_html: {class: "avg"}, wrapper_html: {class: 'input-field'} %>
+
+        <%= f.input :last_name, input_html: {class: "avg"}, wrapper_html: {class: 'input-field'}%>
+    </div>
+
+
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'button radius' %>
+      <%= link_to 'Cancel', items_path, :class => 'button alert radius' %>
+    </div>
+
+<% end %>

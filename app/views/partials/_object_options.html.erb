@@ -6,6 +6,8 @@
     <% end %>
     &nbsp;&nbsp;
     
+
+    <% if current_user.role?(:admin)
     <%= link_to(eval("edit_#{model_name}_path(object)"), class: 'button radius') do %>
         &nbsp;<%= "Edit #{opt}" %>
     <% end %>
