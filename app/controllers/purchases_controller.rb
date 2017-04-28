@@ -1,5 +1,7 @@
 class PurchasesController < ApplicationController
   before_action :check_login
+  authorize_resource #check ability file
+
   def index
     @purchases = Purchase.chronological.to_a
   end

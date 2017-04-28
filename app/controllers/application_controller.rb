@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
+
+  include ChessStoreHelpers::Cart
+  before_action :count_cart_items
   protect_from_forgery with: :exception
 
   rescue_from CanCan::AccessDenied do |exception|
@@ -10,6 +13,10 @@ class ApplicationController < ActionController::Base
 
   private 
   #Handling authentication
+
+  def count_cart_items
+    @cart_items = get_list_of_items_in_cart
+  end
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]

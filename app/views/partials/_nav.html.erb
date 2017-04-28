@@ -5,6 +5,7 @@
       <li><%= link_to "Reorder List", home_path %></li> <!-- only show if manager or admin -->
       <li><%= link_to "Prices", item_prices_path %></li>
     </ul>
+    
     <nav>
     <div class = "nav-wrapper">
       <a href="#" class="brand-logo">Logo</a>
@@ -16,11 +17,11 @@
         <!-- options for items -->
           <!-- <li class="has-dropdown"> -->
        <!--  <li class="dropdown-button" data-activates='dropdown1'> -->
-          <li><%= link_to "Items", items_path, class: "dropdown-button", data_activates: "dropdown1" %> <!-- ASK ISRAEL ABT THE DROPDOWN -->
-          <ul class="dropdown">
+          <li><%= link_to "Items", "#!", class: "dropdown-button", data: {activates: "dropdown1"} %> </li><!-- ASK ISRAEL ABT THE DROPDOWN -->
+        <!--   <ul class="dropdown"> -->
 <!--             <li><%= link_to "Item List", items_path %></li> -->
 <!--             <li><%= link_to "Reorder List", home_path %></li> -->
-            <li><%= link_to "Add an Item", new_item_path %></li>
+          <li><%= link_to "Add an Item", new_item_path %></li>
           </ul>
         </li>
 

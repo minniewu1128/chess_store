@@ -1,7 +1,9 @@
 class ItemsController < ApplicationController
+
+  authorize_resource
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
-    before_action :check_login, except: [:index, :show]
+  before_action :check_login, except: [:index, :show]
 
   def index
     # get info on active items for the big three...
@@ -14,8 +16,10 @@ class ItemsController < ApplicationController
   end
 
   def show
-    # get the price history for this item
-    @price_history = @item.item_prices.chronological.to_a
+    # get the price history for this item,should only be seen ny 
+    if current_user.role?(:manager)||current_user.role?(:admin)
+      @price_history = @item.item_prices.chronological.to_a
+    end
     # everyone sees similar items in the sidebar
     @similar_items = Item.for_category(@item.category).active.alphabetical.to_a - [@item]
   end

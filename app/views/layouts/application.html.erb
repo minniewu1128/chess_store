@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Chess Warehouse :: <%= controller.controller_name.capitalize %></title>
+
     <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     
     <!-- Compiled and minified CSS -->
@@ -14,6 +15,15 @@
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
+
+    <script type="text/javascript">
+      $( document ).ready(function(){
+        $(".dropdown-button").dropdown();
+      })
+    </script>
+    
+
           
   </head>
 
@@ -24,16 +34,16 @@
     <%= render :partial => "partials/nav" %>
     
     <div class="row">
-      <div class="small-12 columns" id="main_content">
+      <div class="col s12" id="main_content">
         <%= render :partial => "partials/flash" %>
         <%= yield %>
       </div>
     </div>
     <footer>
-      <div class="small-12 columns" id="footer">
+      <div class="col s12" id="footer">
         <%= render partial: 'partials/footer' %>
       </div>
     </footer> 
-    <%= javascript_include_tag "application" %>
+
   </body>
 </html>

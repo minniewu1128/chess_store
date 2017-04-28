@@ -5,6 +5,7 @@ module ChessStoreHelpers
     # saved as a session variable that the user should have  
     # available during the course of their interactions w/ system.
 
+    #call this
     def create_cart
       session[:cart] ||= Hash.new
     end

@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+
   def home
     if logged_in?
         if current_user.role? :manager

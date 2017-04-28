@@ -1,36 +1,57 @@
 class OrdersController < ApplicationController
-    include ChessStoreHelpers::Cart
-    before_action :check_login
+  include ChessStoreHelpers::Cart
+  before_action :check_login
+  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  #is it possible to edit orders?
 
-    def index
-    end
+  #add to cart, remove from cart methods with routes
 
-    def show
-    end
+  def index
+    @orders = Order.all.chronological.to_a
+    #for shippers
+    @unshipped_orders = Order.not_shipped.chronological.to_a
+    @paid_and_unshipped_orders = Order.paid.not_shipped.chronological.to_a
+  end
 
-    def new
-    end
+  def show
+    @total_weight = @order.total_weight
+  end
 
-    def edit
-    end
+  def new
+  end
 
-    def create
-    end
+  def edit
+  end
 
-    def update
-    end
+  def create
+  end
 
-    def destroy
-    end
+  def update
+  end
 
-    private
+  def destroy
+  end
 
-    def set_order
-    end
+  def add_to_cart
+    add_item_to_cart(params[:item_id])
+    redirect_to home_path
+    #pass in item_id as parameter (try to do this with ajax)
+  end
 
-    def order_params
-    end
-    
+  def remove_from_cart
+  end
+
+  private
+
+  def set_order
+    @order = Order.find(params[:id])
+
+  end
+
+  def order_params
+    params.require(:order).permit(:date, :school_id, :user_id, :grand_total, :payment_receipt)
+  end
+
 
 
   
