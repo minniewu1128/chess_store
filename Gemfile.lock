@@ -132,6 +132,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    materialize-sass (0.98.1)
+      sass (~> 3.3)
     meta_request (0.4.0)
       callsite (~> 0.0, >= 0.0.11)
       rack-contrib (~> 1.1)
@@ -276,6 +278,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   letter_opener
+  materialize-sass
   meta_request
   minitest
   minitest-rails

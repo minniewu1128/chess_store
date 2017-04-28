@@ -1,0 +1,35 @@
+<div class="contain-to-grid">
+<!--   <nav class="top-bar" data-topbar role="navigation">  -->
+    <ul id="dropdown1" class="dropdown-content">
+      <li><%= link_to "Item List", items_path %></li>
+     <!-- only show if manager or admin -->
+    </ul>
+    
+    <nav>
+    <div class = "nav-wrapper">
+      <a href="#" class="brand-logo">eChess</a>
+    <!-- <section class="top-bar-section"> -->
+      <!-- <ul class="left"> -->
+        <ul class="right hide-on-med-and-down">
+        <!-- link to home -->
+          <li><%= link_to "Home", home_path %></li>
+        <!-- options for items -->
+          <!-- <li class="has-dropdown"> -->
+       <!--  <li class="dropdown-button" data-activates='dropdown1'> -->
+          <li><%= link_to "Items", "#!", class: "dropdown-button", data: {activates: "dropdown1"} %> </li><!-- ASK ISRAEL ABT THE DROPDOWN -->
+        <!--   <ul class="dropdown"> -->
+<!--             <li><%= link_to "Item List", items_path %></li> -->
+<!--             <li><%= link_to "Reorder List", home_path %></li> -->
+          
+          
+        </li>
+
+        <!-- options for purchases -->
+
+        <!-- options for prices -->
+      </ul>
+
+    </section>
+    </div>
+  </nav>
+</div>

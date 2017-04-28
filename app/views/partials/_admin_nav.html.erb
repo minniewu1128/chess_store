@@ -1,39 +1,17 @@
-<<div class="contain-to-grid">
+<div class="contain-to-grid">
 <!--   <nav class="top-bar" data-topbar role="navigation">  -->
-  
-    <!-- Item options dropdown -->
     <ul id="dropdown1" class="dropdown-content">
       <li><%= link_to "Item List", items_path %></li>
-      <!-- only show if manager or admin -->
-      <% if logged_in? && (current_user.role?(:manager)||current_user.role?(:admin)) %>
-        <li><%= link_to "Add an Item", new_item_path %></li>
-        <li><%= link_to "Reorder List", reorder_list_path %></li> 
-        <li><%= link_to "Prices", item_prices_path %></li>
-      <% end %>
-      </ul>
-    
-      <!-- User profile options dropdown -->
-      <ul id="dropdown2" class="dropdown-content">
-      <li><%= link_to "Profile", users_path(current_user) %></li>
-      <li><i class="small material-icons prefix">shopping_cart</i><%= link_to "Cart", reorder_list_path%></li>
-      <li><%= link_to "Log Out", logout_path%></li>
+      <li><%= link_to "Reorder List", reorder_list_path %></li> <!-- only show if manager or admin -->
+      <li><%= link_to "Prices", item_prices_path %></li>
+      <li><%= link_to "Add an Item", new_item_path %></li>
     </ul>
-
     
-    <nav class= "teal lighten-2">
+    <nav>
     <div class = "nav-wrapper">
       <a href="#" class="brand-logo">eChess</a>
     <!-- <section class="top-bar-section"> -->
       <!-- <ul class="left"> -->
-     
-        <ul class="right hide-on-med-and-down">
-         <% if logged_in? %>
-          <li><%=link_to "Welcome, #{current_user.first_name}", user_path(current_user), class: "dropdown-button",data: {activates: "dropdown2"} %></li>
-          <% else %>
-            <li><%= link_to "Log In", login_path %> </li>
-        <%end%>
-        </ul>
-
         <ul class="right hide-on-med-and-down">
         <!-- link to home -->
           <li><%= link_to "Home", home_path %></li>
@@ -58,8 +36,6 @@
           <%= link_to "Prices", item_prices_path %>
         </li>
       </ul>
-
-
 
     </section>
     </div>

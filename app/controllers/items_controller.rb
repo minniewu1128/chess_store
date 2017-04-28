@@ -15,6 +15,12 @@ class ItemsController < ApplicationController
     @inactive_items = Item.inactive.alphabetical.to_a
   end
 
+  def reorder_list
+    @items_to_reorder = Item.need_reorder.alphabetical.to_a
+  end
+
+
+
   def show
     # get the price history for this item,should only be seen ny 
     if current_user.role?(:manager)||current_user.role?(:admin)
