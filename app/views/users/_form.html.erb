@@ -9,18 +9,38 @@
     <div class ="row">
         <%= f.input :username, input_html: {class: "avg"}, wrapper_html: { class: 'input-field' } %>
 
-       
     
         <%= f.input :first_name, input_html: {class: "avg"}, wrapper_html: {class: 'input-field'} %>
 
         <%= f.input :last_name, input_html: {class: "avg"}, wrapper_html: {class: 'input-field'}%>
+
+        <%= f.input :password, wrapper_html: {class: 'input-field'}%>
+
+        <%= f.input :password_confirmation, wrapper_html: {class: 'input-field'}%>
+
+        <!-- select school or add a school, first do select school, ask in OH about simple form and relationships-->
+
+        <%= f.input :email, wrapper_html: {class: 'input-field'}%>
+
+        <%= f.input :phone, wrapper_html: {class: 'input-field'} %>
+
+        <!-- ask if managers can change whether or not customer is active -->
+       
+          <% if logged_in? && (current_user.role?(:admin)||current_user.role?(:manager)) %>
+            <%= f.input :active, wrapper_html: {class: 'switch'}, input_html: {type: 'checkbox'} %>
+          <%end %>
+          <% if logged_in? && current_user.role?(:admin) %>
+            <%= f.input :role, wrapper_html: {class: 'input-field'} %>
+          <% end %>
+
+    
     </div>
 
 
 
     <div class="form-actions">
-      <%= f.submit nil, :class => 'button radius' %>
-      <%= link_to 'Cancel', items_path, :class => 'button alert radius' %>
+      <%= f.submit nil, :class => 'btn waves-effect waves-light', :type => 'submit', :name => 'action' %>
+      <%= link_to 'Cancel', home_path, :class => 'btn waves-effect waves-light' %>
     </div>
 
 <% end %>

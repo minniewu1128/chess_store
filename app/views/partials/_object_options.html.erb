@@ -7,10 +7,12 @@
     &nbsp;&nbsp;
     
 
-    <% if current_user.role?(:admin)
-    <%= link_to(eval("edit_#{model_name}_path(object)"), class: 'button radius') do %>
+    <% if logged_in? && current_user.role?(:admin) %>
+      <%= link_to(eval("edit_#{model_name}_path(object)"), class: 'button radius') do %>
         &nbsp;<%= "Edit #{opt}" %>
+      <% end %>
     <% end %>
+
     &nbsp;&nbsp;
     
     <%= link_to(eval("#{model_name}_path(object)"), method: 'delete', data: {confirm: "Are you sure you want to permanently delete #{opt}"}, class: 'button radius alert') do %>

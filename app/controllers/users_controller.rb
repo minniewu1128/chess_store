@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  before_action :check_login
+  authorize_resource
     
   def index
     @users = User.alphabetical.paginate(:page => params[:page]).per_page(10)

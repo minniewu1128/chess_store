@@ -3,7 +3,7 @@
     <%= render :partial => "item_details" %>
   </div>
   <div class="col s4">
-    <% if current_user.role?(:manager)||current_user.role?(:admin)%>
+    <% if logged_in? && (current_user.role?(:manager)||current_user.role?(:admin))%>
     <%= render :partial => "price_history" unless @price_history.empty?%>
     <%end%>
     <%= render :partial => "similar_items" unless @similar_items.empty?%>

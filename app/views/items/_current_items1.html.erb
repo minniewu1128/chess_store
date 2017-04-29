@@ -1,0 +1,47 @@
+<% unless items.nil? || items.empty? %>
+  <h5><%= item_type.capitalize %></h5>
+<!--   <table class="table table-striped">
+    <thead>
+      <tr>
+        <th width="300">Name</th>
+        <th width="100">Price</th>
+        <th width="100">Inventory</th>
+      </tr>
+    </thead>
+    <tbody> -->
+
+
+      <% items.each do |item| %>
+        <div class="col s6 m6">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <%=image_tag("Chess.jpg", class: "activator")%>
+            </div>
+            
+            <div class="card-content">
+              
+              <span class="card-title activator grey-text text-darken-4"><%= item.name %>
+
+              <i class="material-icons right">more_vert</i></span>
+                
+                <p> <%= number_to_currency item.current_price %> </p>
+                
+                 <%= link_to('Full Details', item_path(item))%> 
+
+                <%= link_to("Add to Cart", add_to_cart_path(item.id))%>
+            
+            </div>
+    
+
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4"><%= item.name %><i class="material-icons right">close</i></span>
+      <p> <%= item.description %></p>
+    </div>
+  </div>
+
+  </div>
+
+
+  <% end %> 
+
+  <%end %>

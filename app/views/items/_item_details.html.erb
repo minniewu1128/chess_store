@@ -15,7 +15,7 @@
   <b>Price</b>: <%= @item.current_price.nil? ? 'N/A' : number_to_currency(@item.current_price) %>
 </p>
 
-<% if current_user.role?(:manager)||current_user.role?(:admin)%>
+<% if logged_in? && (current_user.role?(:manager)||current_user.role?(:admin))%>
 <p>
   <b>Inventory Level</b>: <%= @item.inventory_level.nil? ? 'N/A' : @item.inventory_level %>
 </p>

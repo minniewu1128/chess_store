@@ -41,7 +41,7 @@ class ItemsController < ApplicationController
 
   def show
     # get the price history for this item,should only be seen ny 
-    if current_user.role?(:manager)||current_user.role?(:admin)
+    if logged_in? && (current_user.role?(:manager)||current_user.role?(:admin))
       @price_history = @item.item_prices.chronological.to_a
     end
     # everyone sees similar items in the sidebar

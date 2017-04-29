@@ -33,6 +33,14 @@ class Ability
         #can read personal information, edit name, phone, email and password (cannot edit username)
         can :read, Item
 
+        can :index_pieces, Item
+
+        can :index_boards, Item
+
+        can :index_clocks, Item
+
+        can :index_supplies, Item
+
         can :read, Order
 
         can :read, OrderItem
@@ -44,6 +52,13 @@ class Ability
         end
 
     elsif user.role? :customer
+        can :index_pieces, Item
+
+        can :index_boards, Item
+
+        can :index_clocks, Item
+
+        can :index_supplies, Item
         can :read, Item
         can :index, Item
         can :index_pieces, Item
@@ -79,6 +94,14 @@ class Ability
     else
 
         can :index, Item
+
+        can :index_pieces, Item
+
+        can :index_boards, Item
+
+        can :index_clocks, Item
+
+        can :index_supplies, Item
 
         can :read, Item
         
