@@ -1,3 +1,5 @@
+
+
 <%= simple_form_for @user, html: { class: 'form-horizontal', multipart: true } do |f| %>
     
     <%if !logged_in?%>
@@ -6,7 +8,7 @@
       <h1>Add a New User</h1>
     <% end %>
     
-    <div class ="row">
+    <!-- <div class ="row"> -->
         <%= f.input :username, input_html: {class: "avg"}, wrapper_html: { class: 'input-field' } %>
 
     
@@ -26,15 +28,22 @@
 
         <!-- ask if managers can change whether or not customer is active -->
        
-          <% if logged_in? && (current_user.role?(:admin)||current_user.role?(:manager)) %>
-            <%= f.input :active, wrapper_html: {class: 'switch'}, input_html: {type: 'checkbox'} %>
-          <%end %>
-          <% if logged_in? && current_user.role?(:admin) %>
-            <%= f.input :role, wrapper_html: {class: 'input-field'} %>
-          <% end %>
 
-    
-    </div>
+          <%# if logged_in? && (current_user.role?(:admin)||current_user.role?(:manager)) %>
+
+            <%= f.input_field :active, as: :boolean, boolean_style: :inline %>
+            
+            <%= f.label :active %>
+
+           <!--  <%#end %> -->
+
+
+          <%# #if logged_in? && current_user.role?(:admin) %>
+            <%= f.input :role, collection: User::ROLES, wrapper_html: {class: 'input-field'} %>
+          <%# end %>
+ 
+  
+<!--     </div> -->
 
 
 

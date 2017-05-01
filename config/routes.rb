@@ -30,8 +30,9 @@ Rails.application.routes.draw do
   get 'privacy' => 'home#privacy', as: :privacy
 
   #Cart routes
-  get 'add_to_cart/:item_id' => 'orders#add_to_cart', as: :add_to_cart 
-  get 'remove_from_cart/:item_id' => 'orders#remove_from_cart', as: :remove_from_cart
+  get 'add_to_cart' => 'orders#add_to_cart', as: :add_to_cart 
+  get 'remove_from_cart' => 'orders#remove_from_cart', as: :remove_from_cart
+  get 'cart' => 'orders#cart', as: :cart
 
   #Reorder List
   get 'reorder_list' => 'items#reorder_list', as: :reorder_list

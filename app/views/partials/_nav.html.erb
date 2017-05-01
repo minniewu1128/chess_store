@@ -1,4 +1,4 @@
-<<div class="contain-to-grid">
+<div class="contain-to-grid">
 <!--   <nav class="top-bar" data-topbar role="navigation">  -->
   
     <!-- Item options dropdown -->
@@ -24,7 +24,7 @@
         <%end%>
       </li>
 
-      <li><%= link_to add_to_cart_path(1) do%>
+      <li><%= link_to cart_path do%>
         <i class="small material-icons prefix">shopping_cart</i> Cart
         <%end%>
       </li>
@@ -34,10 +34,11 @@
     
     <nav class= "teal lighten-2">
     <div class = "nav-wrapper">
-      <a href="#" class="brand-logo">AnM Chess</a>
+      <div id = "logo">
+      <%= link_to image_tag('amlogo5.png'), home_path, class: 'brand-logo'%>
     <!-- <section class="top-bar-section"> -->
       <!-- <ul class="left"> -->
-     
+      </div>
         <ul class="right hide-on-med-and-down">
          <% if logged_in? %>
           <li><%=link_to "Welcome, #{current_user.first_name}", user_path(current_user), class: "dropdown-button",data: {activates: "dropdown2"} %></li>

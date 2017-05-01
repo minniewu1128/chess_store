@@ -1,8 +1,12 @@
-<% if @boards.empty? %>
-  <h3>There are no boards in the system at this time</h3>
-<% else %>
-  <h3>Available Boards at the Chess Warehouse</h3>
 
-<%= render partial: "current_items", locals: {items: @boards, item_type: "boards"} %>
 
-<% end %>
+    <% if @boards.empty? %>
+  
+        <h3>There are no boards in the system at this time</h3>
+    <% else %>
+
+        <%= render partial: "current_items1", locals: {items: @boards, item_type: "boards"} %>
+
+
+    <% end %>
+

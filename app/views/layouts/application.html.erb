@@ -6,12 +6,14 @@
 
     <title>Chess Warehouse :: <%= controller.controller_name.capitalize %></title>
 
-    <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+
+
+
 
      <!-- Stylesheet for Materialize Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -31,18 +33,23 @@
   </head>
 
   <body>
+    <header>
     <div id="title_area">
-      <%= link_to image_tag('chess_store_title.png'), home_path %>
        <%= render :partial => "partials/nav" %>
     </div>
+    </header>
    
     
-    <div class="row">
-      <div class="container ccol s12" id="main_content">
+    <div class="container row col s12">
+      
+      <div class= "col s12" id="main_content">
         <%= render :partial => "partials/flash" %>
-        <%= yield %>
+        <%= yield %>      
       </div>
+    
     </div>
+    
+
     <footer>
       <div class="col s12" id="footer">
         <%= render partial: 'partials/footer' %>

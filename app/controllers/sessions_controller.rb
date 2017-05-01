@@ -9,6 +9,7 @@
       user = User.find_by_username(params[:username])
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
+        destroy_cart
         create_cart
         redirect_to home_path, notice: "Logged in!"
       else

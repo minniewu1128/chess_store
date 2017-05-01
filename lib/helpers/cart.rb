@@ -30,6 +30,7 @@ module ChessStoreHelpers
 
     def remove_item_from_cart(item_id)
       if session[:cart].keys.include?(item_id)
+
         session[:cart].delete(item_id)
       end
     end

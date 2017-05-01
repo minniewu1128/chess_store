@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   authorize_resource
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
-  before_action :check_login, except: [:index, :show]
+  before_action :check_login, except: [:index, :show, :index_pieces, :index_boards, :index_clocks, :index_supplies]
 
   def index
     # get info on active items for the big three...

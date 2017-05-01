@@ -27,11 +27,15 @@ class Ability
         can :create, ItemPrice  do |item_price|
             all_items = Items.all.map(&:id)
             all_items.include? item_price.item.id
+        
         end
+        can :manage, Purchase
 
     elsif user.role? :shipper
         #can read personal information, edit name, phone, email and password (cannot edit username)
         can :read, Item
+
+        can :index, Item
 
         can :index_pieces, Item
 
@@ -52,6 +56,8 @@ class Ability
         end
 
     elsif user.role? :customer
+
+
         can :index_pieces, Item
 
         can :index_boards, Item
@@ -61,10 +67,7 @@ class Ability
         can :index_supplies, Item
         can :read, Item
         can :index, Item
-        can :index_pieces, Item
-        can :index_boards, Item
-        can :index_clocks, Item
-        can :index_supplies, Item
+
         can :update, User do |u|
             u.id == user.id
         end

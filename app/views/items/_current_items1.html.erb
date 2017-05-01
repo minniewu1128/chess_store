@@ -12,8 +12,8 @@
 
 
       <% items.each do |item| %>
-        <div class="col s6 m6">
-          <div class="card">
+        <div class="col s4 m4">
+          <div class="card hoverable">
             <div class="card-image waves-effect waves-block waves-light">
               <%=image_tag("Chess.jpg", class: "activator")%>
             </div>
@@ -28,8 +28,16 @@
                 
                  <%= link_to('Full Details', item_path(item))%> 
 
-                <%= link_to("Add to Cart", add_to_cart_path(item.id))%>
-            
+
+           
+                <%= form_tag add_to_cart_path, :method => 'get', html: { class: 'form-horizontal' } do %>
+                <%= text_field :add_to_cart, :quantity %>
+                <%= hidden_field :add_to_cart, :item_id, value: item.id %> 
+                  <button class="btn waves-effect waves-light" type="submit" name="action">Add to Cart
+                    <i class="material-icons right">shopping_cart s</i>
+                  </button>
+
+                <%end%>
             </div>
     
 

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :check_login
+
+  before_action :check_login, except: [:new]
   authorize_resource
     
   def index
