@@ -4,16 +4,25 @@ class Order < ActiveRecord::Base
   include ChessStoreHelpers::Shipping
   require 'base64'
 
+
   # Relationships
   has_many :order_items
   has_many :items, through: :order_items
   belongs_to :school
   belongs_to :user
 
+
   # Virtual attributes (non-saved)
   attr_accessor :credit_card_number
   attr_accessor :expiration_year
   attr_accessor :expiration_month
+  attr_accessor :school_name
+  attr_accessor :school_street_1
+  attr_accessor :school_street_2
+  attr_accessor :school_city
+  attr_accessor :school_state
+  attr_accessor :school_zip
+
   attr_reader :destroyable
 
   # Scopes

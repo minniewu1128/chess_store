@@ -25,7 +25,8 @@
       </li>
 
       <li><%= link_to cart_path do%>
-        <i class="small material-icons prefix">shopping_cart</i> Cart
+        <i class="small material-icons prefix">shopping_cart</i>Cart
+       <%= @cart_items.size %>
         <%end%>
       </li>
       <li><%= link_to "Log Out", logout_path%></li>

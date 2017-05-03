@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'clocks' => 'items#index_clocks', :as => :index_clocks
   get 'pieces' => 'items#index_pieces', :as => :index_pieces
   get 'supplies' => 'items#index_supplies', :as => :index_supplies
+
   
   #Routes for login and sessions
   resources :users
@@ -33,6 +34,10 @@ Rails.application.routes.draw do
   get 'add_to_cart' => 'orders#add_to_cart', as: :add_to_cart 
   get 'remove_from_cart' => 'orders#remove_from_cart', as: :remove_from_cart
   get 'cart' => 'orders#cart', as: :cart
+
+  #Additional Routes for Orders
+
+  get 'checkout' => 'orders#new', as: :checkout
 
   #Reorder List
   get 'reorder_list' => 'items#reorder_list', as: :reorder_list

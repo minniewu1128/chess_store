@@ -6,6 +6,8 @@
 
     <title>Chess Warehouse :: <%= controller.controller_name.capitalize %></title>
 
+
+    <%= stylesheet_link_tag "application"%>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     
@@ -39,7 +41,15 @@
     </div>
     </header>
    
-    
+   <% if current_page?(controller: 'home', action: 'home')  %>
+    <div class = 'col s12' id = 'main_content'>
+
+      <%= render :partial => "partials/flash" %>
+      <%= yield %>
+    </div>
+
+   
+   <% else %> 
     <div class="container row col s12">
       
       <div class= "col s12" id="main_content">
@@ -48,6 +58,8 @@
       </div>
     
     </div>
+
+    <% end %>
     
 
     <footer>

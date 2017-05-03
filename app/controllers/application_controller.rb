@@ -15,7 +15,11 @@ class ApplicationController < ActionController::Base
   #Handling authentication
 
   def count_cart_items
-    @cart_items = get_list_of_items_in_cart
+    @cart_items = []
+    unless session[:cart].nil?
+      @cart_items = get_list_of_items_in_cart
+    end
+    @cart_items
   end
 
   def current_user

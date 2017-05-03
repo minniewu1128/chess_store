@@ -2,7 +2,10 @@
 
     <legend><%= controller.action_name.capitalize %> Purchase</legend>
 
-    <%= f.input :item_id,  collection: Item.all.to_a, wrapper_html: {class: 'input-field'}%>
+    <% @item = params[:item_id] %>
+
+    <%= f.input :item_id, :as => :hidden, :input_html => {:value => @item} %>
+    
     <%= f.input :quantity, input_html: {class: "avg"} %>
 
 

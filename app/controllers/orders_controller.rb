@@ -1,7 +1,9 @@
 class OrdersController < ApplicationController
   include ChessStoreHelpers::Cart
+  include ChessStoreHelpers::Shipping
   before_action :check_login
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+
   #is it possible to edit orders?
 
   #add to cart, remove from cart methods with routes
@@ -26,14 +28,32 @@ class OrdersController < ApplicationController
 
   def create
     #order created when pressing "Place Order" button in shopping cart
-    @order= Order.new(order_params)
-    save_each_item_in_cart(@order)
-    @order.grand_total = calculate_cart_items_cost
-    if @order.save
+    #user can see what they're going to buy, choose school, add credit card number
+    orderh = params[:order]
+    if !orderh[:school_id].nil? && !orderh[:school_id].blank? #(check not nil, if they select from dropdown)
+       puts "new school"
+      @relevant_school_id = orderh[:school_id]
+    else #(create a new school if they don't select one)
+     
+      @school = School.new(name: orderh[:school_name], zip: orderh[:school_zip], street_1: orderh[:school_street_1], street_2: orderh[:school_street_2], city: orderh[:school_city], state: orderh[:school_state])
+      if @school.save!
+          @relevant_school_id = @school.id
+      else
+         return render "checkout", notice: "Please make sure school information is filled out correctly."
+      end
+    end
+    
+    @order= Order.new(user_id: current_user.id, school_id: @relevant_school_id, credit_card_number: orderh[:credit_card_number], expiration_year: orderh[:expiration_year].to_i, expiration_month: orderh[:expiration_month].to_i)
+    @order.grand_total = calculate_cart_items_cost + calculate_cart_shipping
+    if @order.save!
       #should I do this before or after saving the order
-      redirect_to cart_path, notice: "Order complete!"
+      @order.pay
+      save_each_item_in_cart(@order)
+      destroy_cart
+      create_cart
+      return redirect_to cart_path, notice: "Order complete!"
     else
-      redirect_to cart_path, notice: "An error occured while placing your order."
+      return render 'checkout', notice: "An error occured while placing your order."
     end
   end
 
@@ -76,8 +96,9 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
+
   def order_params
-    params.require(:order).permit(:date, :school_id, :user_id, :grand_total, :payment_receipt)
+    params.require(:order).permit(:school_id, :user_id, :school_name, :school_zip, :school_street_1, :school_street_2, :school_city, :school_state, :credit_card)
   end
 
 
