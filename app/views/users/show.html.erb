@@ -1,0 +1,45 @@
+
+<br/>
+
+<div class = 'row col s8'>
+
+    <%= render partial: "profile", locals: {user: @user} %>
+
+<br/>
+<br/>
+<h4 class = "teal-text text-darken-2">Recent Orders</h4>
+ 
+ <ul class="collapsible popout" data-collapsible="accordion">
+
+  <% unless @user.orders.nil? || @user.orders.empty?%>
+    
+    <% @user.orders.chronological.limit(3).each do |order| %>
+      
+      <li>
+        <div class="collapsible-header"><i class="material-icons icon-teal">label_outline</i><b class = "left-align">Date: </b> <%=order.date.strftime("%b, %d %Y")%>
+
+        <div class = "right-align"> <b>Address:</b>
+        <%= render partial: 'partials/address_info', locals: {school: order.school} %></div>
+        </div>
+
+        <div class="collapsible-body">
+          
+          <span>
+            
+              <%= render partial: 'user_orders', locals: {order: order} %>
+             
+           </span>
+        
+          </div>
+        </li>
+      
+      <%end%>
+    <%end%>
+  
+  </ul>
+        
+</div>
+
+<div class = 'row col s4'>
+    <%= render partial: 'buy_again', locals: {user: @user} %>
+</div>

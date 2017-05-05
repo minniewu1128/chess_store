@@ -16,6 +16,10 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def show
+    @user = current_user
+  end
+
   #different when admin is ediitng user and when user is editing themself
 
   def create

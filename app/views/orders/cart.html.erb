@@ -25,7 +25,7 @@
           <td>
             <%= form_tag remove_from_cart_path, :method => 'get', html: { class: 'form-horizontal' } do %>
                 <%= hidden_field :remove_from_cart, :item_id, value: oi.item.id %> 
-                  <button  class="btn-floating btn-small waves-effect waves-light  white" type="submit" name="action"><i class="material-icons icon-orange">delete</i></button>
+                  <button  class="btn-floating btn-small waves-effect waves-light  white" type="submit" name="action"><i class="material-icons icon-blue">delete</i></button>
                 <%end%>
           </td>
         </tr>
@@ -40,10 +40,10 @@
   <h6 class = 'right-align'> <b>Shipping Cost</b> <%= number_to_currency(@shipping_cost) %>
   <br/>
 
-  <h5 class = 'right-align'> <b>Total:</b> <%= number_to_currency(@cost) %> </h5>
+  <h5 class = 'right-align'> <b class = "teal-text text-darken-2">Total:</b> <%= number_to_currency(@cost) %> </h5>
 
 
 <% end %>
 <%= link_to "Keep Shopping", items_path %>
 <br/>
-<%= link_to "Checkout", checkout_path, class: "waves-effect waves-light btn deep-orange accent-1 right"%>
+<%= link_to "Checkout", checkout_path, class: "waves-effect waves-light btn light-blue accent-2 right"%>

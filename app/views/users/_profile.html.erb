@@ -1,0 +1,49 @@
+<%= image_tag 'avatar_not_found.jpg', class: 'circle left', height: '100', width: '100' %>
+    <h3 class = "teal-text text-darken-2"> <%= user.first_name %>'s Profile </h3>
+    <br/>
+        <table class='bordered'>
+            <tbody>
+
+                <tr>
+                    <td width='50'>
+                        <b>Name:</b>
+                    </td>
+                    
+                    <td width='50'>
+                        <%=user.proper_name%>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <b>Username:</b>
+                    </td>
+                    
+                    <td>
+                        <%=user.username%>
+                    </td>
+                </tr>
+              
+
+              <tr>
+                <td>
+                    <b>Phone:</b>
+                </td>
+
+                <td>
+                    <%= user.phone %>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                    <b>email:</b>
+                </td>
+
+                <td>
+                    <%= user.email %>
+                </td>
+              </tr>
+
+            </tbody>
+      </table>
