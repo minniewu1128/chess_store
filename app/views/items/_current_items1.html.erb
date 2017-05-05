@@ -15,7 +15,14 @@
         <div class="col s4 m4">
           <div class="card hoverable">
             <div class="card-image waves-effect waves-block waves-light">
-              <%=image_tag("Chess.jpg", class: "activator")%>
+                <% if item.photo_url.nil? %>
+                  <%=image_tag("Chess.jpg", class: "activator")%>
+                <% else %>
+                  <p><%= image_tag(item.photo_url, class: "activator") %></p>
+                <% end %>
+
+
+              
             </div>
             
             <div class="card-content">

@@ -3,6 +3,7 @@ class Item < ActiveRecord::Base
   # List of allowable categories
   CATEGORIES = [['Boards','boards'],['Pieces','pieces'],['Clocks','clocks'],['Supplies','supplies']]
   
+  mount_uploader :photo, PhotoUploader
   # Relationships
   has_many :order_items
   has_many :item_prices
