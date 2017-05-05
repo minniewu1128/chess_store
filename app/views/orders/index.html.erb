@@ -1,4 +1,9 @@
+<% if logged_in && current_user.role?(:shipper) %>
+
+
 <%= render partial: "partials/index_structure", locals: {model_name: "order", 
                                                          primary: "orders", 
                                                          secondary: nil,
                                                          sidebar: "orders"} %>
+
+<% end %>

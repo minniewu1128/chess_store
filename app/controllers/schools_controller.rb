@@ -5,8 +5,8 @@ class SchoolsController < ApplicationController
     before_action :check_login, except: [:index, :show]
 
     def index
-        @active_schools = School.active.alphabetical.to_a
-        @inactive_schools = School.inactive.alphabetical.to_a
+        @active_schools = School.active.alphabetical.paginate(:page => params[:page]).per_page(20)
+        @inactive_schools = School.inactive.alphabetical.paginate(:page => params[:page]).per_page(20)
     end
 
     def new
@@ -30,7 +30,7 @@ class SchoolsController < ApplicationController
     end
     
     def school_params
-    params.require(:school).permit(:name, :street_1, :street_2, :city, :state, :zip, :min_grade. :max_grade)
+    params.require(:school).permit(:name, :street_1, :street_2, :city, :state, :zip, :min_grade, :max_grade)
     end
 
 

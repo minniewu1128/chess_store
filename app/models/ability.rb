@@ -17,6 +17,8 @@ class Ability
         can :read, :all
         #how to write read emmployee data
         #can do all three things same as manage?
+
+        can :manage, School
         can :manage, Item
         can [:create, :update, :read], User do |u|
             !u.role? :customer

@@ -1,0 +1,33 @@
+<!-- create address as partial need to know where to ship things to -->
+<div class="container" >
+
+<div id="shipper-home">
+<h3 class = "teal-text text-darken-3">Shipping List</h3>
+  <ul class="collapsible popout" data-collapsible="accordion">
+
+  <% unless @orders_to_ship.nil? || @orders_to_ship.empty?%>
+    
+    <% @orders_to_ship.each do |order| %>
+      <li>
+        <div class="collapsible-header"><i class="material-icons icon-teal">bookmark</i>Date</div>
+        
+        <div class="collapsible-body">
+          
+          <span>
+            
+            <b>Address: </b> <%= render partial: 'partials/address_info', locals: {school: order.school} %>
+
+              <%= render partial: 'partials/ship_order', locals: {order: order} %>
+             
+
+           </span>
+        
+          </div>
+        </li>
+      
+      <%end%>
+    <%end%>
+  
+  </ul>
+</div>
+</div>

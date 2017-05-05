@@ -1,0 +1,27 @@
+ <table class="table">
+                
+  <thead>
+    <tr>
+      <th width="250">Item</th>
+      <th width="125">Quantity</th>
+      <th width='125'> Shipped? </th>
+    </tr>
+   </thead>
+
+     <tbody>
+       <% order.order_items.each do |order_item| %>
+
+        <% if order_item.shipped_on.nil? %>
+          <tr>
+            <td><%= link_to order_item.item.name, item_path(order_item.item) %></td>
+            <td><%= order_item.quantity %></td>
+            <td>
+              <div class= "shipping" id = "shipping">
+                <%= link_to "Shipped", mark_as_shipped_path(order_item), :method => :PATCH, remote: true %>
+              </div>
+            </td>                    
+          </tr>
+          <%end %>
+        <% end %>
+      </tbody>
+    </table>

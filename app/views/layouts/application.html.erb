@@ -36,12 +36,13 @@
 
   <body>
     <header>
+    
     <div id="title_area">
        <%= render :partial => "partials/nav" %>
     </div>
     </header>
    
-   <% if current_page?(controller: 'home', action: 'home')  %>
+   <% if @home %>
     <div class = 'col s12' id = 'main_content'>
 
       <%= render :partial => "partials/flash" %>

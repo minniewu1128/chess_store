@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   resources :purchases
   resources :item_prices
   resources :orders
-  resources :order_items
+  # resources :order_items
   resources :schools
+
+  # Routes for order items
+  patch'mark_as_shipped/:id' => 'order_items#mark_as_shipped', :as => :mark_as_shipped
   
   # Additional Routes for Items
 

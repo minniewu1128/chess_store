@@ -7,12 +7,16 @@
     <%= f.input :expiration_month %>
     <%= f.input :school_id, collection: School.all.active.alphabetical.map{|s| [s.name, s.id]}, include_blank: true, input_html: {class: "avg"} %>
     
-    <%= f.input :school_name, label: "Name" %>
-    <%= f.input :school_street_1, label: "Street Address Line 1" %>
-    <%= f.input :school_street_2, label: "Street Address Line 2" %>
-    <%= f.input :school_city, label: "City"%>
-    <%= f.input :school_state, label: "State" %>
-    <%= f.input :school_zip, label: "Zip" %>
+    <a class="waves-effect waves-light btn" onclick="$('#create-school').show(600)">Add a New School</a>
+    
+    <div id = "create-school">
+        <%= f.input :school_name, label: "Name" %>
+        <%= f.input :school_street_1, label: "Street Address Line 1" %>
+        <%= f.input :school_street_2, label: "Street Address Line 2" %>
+        <%= f.input :school_city, label: "City"%>
+        <%= f.input :school_state, label: "State" %>
+        <%= f.input :school_zip, label: "Zip" %>
+    </div>
 
     
 

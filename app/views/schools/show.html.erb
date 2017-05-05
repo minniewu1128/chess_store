@@ -1,0 +1,30 @@
+<div class="row">
+  
+    <h3 class = 'teal-text text-darken-2' ><%= @school.name %></h3>
+
+
+<b> Address: </b> <%= render partial: 'partials/address_info', locals: {school: @school} %>
+
+<p>
+  <b>Grade Range</b>:
+  
+  <% if !@school.min_grade.nil? && !@school.max_grade.nil? && (@school.min_grade != @school.max_grade) %>
+    <%=@school.min_grade %>-<%=@school.max_grade%>
+
+  <%elsif @school.min_grade.nil?&& !@school.max_grade.nil?%>
+    <%=@school.max_grade%>
+  
+  <%elsif !@school.min_grade.nil? && @school.max_grade.nil? %>
+    <%= @school.min_grade %>
+
+  <% else %>
+    'N/A'
+
+   <%end%>
+
+</p>
+
+  <b>Active</b>: <%= @school.active ? 'Yes' : 'No' %>
+</p>
+
+</div>

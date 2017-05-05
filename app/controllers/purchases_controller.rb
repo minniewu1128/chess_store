@@ -3,7 +3,7 @@ class PurchasesController < ApplicationController
   authorize_resource #check ability file
 
   def index
-    @purchases = Purchase.chronological.to_a
+    @purchases = Purchase.chronological.paginate(:page => params[:page]).per_page(20)
   end
 
   def new
@@ -16,7 +16,7 @@ class PurchasesController < ApplicationController
     @purchase.date = Date.current
     
     if @purchase.save
-      redirect_to purchases_path, notice: "Successfully added a purchase for #{@purchase.quantity} #{@purchase.item.name}."
+      redirect_to home_path, notice: "Successfully added a purchase for #{@purchase.quantity} #{@purchase.item.name}."
     else
       render action: 'new'
     end
@@ -28,3 +28,5 @@ class PurchasesController < ApplicationController
   end
   
 end
+
+#question: how to redirect to whereever you came from

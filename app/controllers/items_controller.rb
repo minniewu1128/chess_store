@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
 
   def index
     # get info on active items for the big three...
+    @all_items = Item.active.all.alphabetical.paginate(:page => params[:page]).per_page(10)
     @boards = Item.active.for_category('boards').alphabetical.paginate(:page => params[:page]).per_page(10)
     @pieces = Item.active.for_category('pieces').alphabetical.paginate(:page => params[:page]).per_page(10)
     @clocks = Item.active.for_category('clocks').alphabetical.paginate(:page => params[:page]).per_page(10)

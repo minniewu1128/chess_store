@@ -1,5 +1,5 @@
 
-
+<div class = "container ">
 <h5>Reorder List</h5>
 
 <% unless @items_to_reorder.nil? || @items_to_reorder.empty? %>
@@ -19,8 +19,8 @@
           <td><%= item.inventory_level %></td>
           <td><%= item.reorder_level %></td>
           <td>
-          <div id= "reorder_list">
-          <%= link_to(new_purchase_path(item_id: item.id), class: 'button tiny radius', remote: true) do %> 
+          <div class= "reorder_list" id = "reorder_list">
+          <%= link_to(new_purchase_path(item_id: item.id), remote: true) do %> 
             Purchase
             <% end %> </div>
           </td>
@@ -32,5 +32,7 @@
     </tbody>
   </table>
 <% else %>
-  <p>There are no items that need to be reorder at this time.</p>
+  <p>There are no items that need to be reordered at this time.</p>
 <% end %>
+
+</div>

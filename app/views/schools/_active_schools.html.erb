@@ -1,0 +1,17 @@
+<% unless @active_schools.nil? || @active_schools.empty? %>
+  <h5> Active Schools </h5>
+  <table class="highlight">
+    <thead>
+      <tr>
+        <th width="500">Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @active_schools.each do |school| %>
+        <tr>
+          <td><%= link_to school.name, school_path(school) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
