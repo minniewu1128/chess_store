@@ -7,6 +7,8 @@ class HomeController < ApplicationController
             @items_to_reorder = Item.need_reorder.alphabetical.to_a
         elsif current_user.role? :shipper
             @orders_to_ship = Order.not_shipped.chronological.to_a
+
+
         end
     end
   end

@@ -5,11 +5,48 @@
   <div id="modal1" class="modal bottom-sheet">
     <div class="modal-content">
       <h4>Your Cart </h4>
-  
-      <p>A bunch of text</p>
+      <% if @list.nil? || @list.empty? %>
+        <p>There are no items in the shopping cart at this time.</p>
+        
+      <% else %>
+        <table class="striped">
+          <thead>
+
+            <tr>
+              <th width="300">Name</th>
+              <th width="100">Price</th>
+              <th width="100">Quantity</th>
+              <th width="25"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @list.each do |oi| %>
+              <tr>
+                <td><%= link_to oi.item.name, item_path(oi.item) %></td>
+                <td><%= number_to_currency oi.item.current_price %></td>
+                <td><%= oi.quantity %></td>
+                <td>
+                  <%= form_tag remove_from_cart_path, :method => 'get', html: { class: 'form-horizontal' } do %>
+                      <%= hidden_field :remove_from_cart, :item_id, value: oi.item.id %> 
+                        <button  class="btn-floating btn-small waves-effect waves-light  deep-orange lighten-2" type="submit" name="action"><i class="material-icons">delete</i></button>
+                      <%end%>
+                </td>
+              </tr>
+            <% end %>                
+          </tbody>
+         </table>
+
+  <h5 class = 'left-align'> Total Cost: <%= number_to_currency(@cost) %> </h5>
+
+
+<% end %>
+<%= link_to "Keep Shopping", items_path %>
+<%= link_to "Checkout", checkout_path %>  
+
     </div>
     <div class="modal-footer">
       <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
     </div>
   </div>
           
+

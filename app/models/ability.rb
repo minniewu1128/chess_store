@@ -70,6 +70,10 @@ class Ability
         can :read, Item
         can :index, Item
 
+        can :read, User do |u|
+            u.id == user.id
+        end
+
         can :update, User do |u|
             u.id == user.id
         end

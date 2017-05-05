@@ -88,6 +88,7 @@ class OrdersController < ApplicationController
   def cart
     @list = get_list_of_items_in_cart
     @cost = calculate_cart_items_cost
+    @shipping_cost = calculate_cart_shipping
   end
 
   private

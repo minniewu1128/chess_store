@@ -1,16 +1,17 @@
-<h3>Shopping Cart</h3>
+<h3 class = 'teal-text text-darken-2'>Shopping Cart</h3>
 
 <% if @list.nil? || @list.empty? %>
   <p>There are no items in the shopping cart at this time.</p>
   
 <% else %>
-  <table class="striped">
+  <table class="bordered">
     <thead>
 
       <tr>
         <th width="300">Name</th>
         <th width="100">Price</th>
         <th width="100">Quantity</th>
+        <th width ='100'> Subtotal</th>
         <th width="25"></th>
       </tr>
     </thead>
@@ -20,10 +21,11 @@
           <td><%= link_to oi.item.name, item_path(oi.item) %></td>
           <td><%= number_to_currency oi.item.current_price %></td>
           <td><%= oi.quantity %></td>
+          <td><%=number_to_currency oi.subtotal %> </td>
           <td>
             <%= form_tag remove_from_cart_path, :method => 'get', html: { class: 'form-horizontal' } do %>
                 <%= hidden_field :remove_from_cart, :item_id, value: oi.item.id %> 
-                  <button  class="btn-floating btn-small waves-effect waves-light  deep-orange lighten-2" type="submit" name="action"><i class="material-icons">delete</i></button>
+                  <button  class="btn-floating btn-small waves-effect waves-light  white" type="submit" name="action"><i class="material-icons icon-orange">delete</i></button>
                 <%end%>
           </td>
         </tr>
@@ -33,10 +35,15 @@
  
     </tbody>
   </table>
+  <br/>
+  <br/>
+  <h6 class = 'right-align'> <b>Shipping Cost</b> <%= number_to_currency(@shipping_cost) %>
+  <br/>
 
-  <h5 class = 'left-align'> Total Cost: <%= number_to_currency(@cost) %> </h5>
+  <h5 class = 'right-align'> <b>Total:</b> <%= number_to_currency(@cost) %> </h5>
 
 
 <% end %>
 <%= link_to "Keep Shopping", items_path %>
-<%= link_to "Checkout", checkout_path %>
+<br/>
+<%= link_to "Checkout", checkout_path, class: "waves-effect waves-light btn deep-orange accent-1 right"%>

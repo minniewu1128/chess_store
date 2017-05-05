@@ -1,24 +1,16 @@
+<div class="row">
+
 <% unless items.nil? || items.empty? %>
   <h5><%= item_type.capitalize %></h5>
-<!--   <table class="table table-striped">
-    <thead>
-      <tr>
-        <th width="300">Name</th>
-        <th width="100">Price</th>
-        <th width="100">Inventory</th>
-      </tr>
-    </thead>
-    <tbody> -->
-
 
       <% items.each do |item| %>
-        <div class="col s4 m4">
-          <div class="card hoverable">
+        <div class="col s6 m6">
+          <div class="card hoverable large">
             <div class="card-image waves-effect waves-block waves-light">
                 <% if item.photo_url.nil? %>
                   <%=image_tag("Chess.jpg", class: "activator")%>
                 <% else %>
-                  <p><%= image_tag(item.photo_url, class: "activator") %></p>
+                  <%= image_tag(item.photo_url, class: "activator") %><
                 <% end %>
 
 
@@ -27,7 +19,7 @@
             
             <div class="card-content">
               
-              <span class="card-title activator grey-text text-darken-4"><%= item.name %>
+              <span class="activator grey-text text-darken-4"><h6><%= item.name %></h6>
 
               <i class="material-icons right">more_vert</i></span>
                 
@@ -69,3 +61,5 @@
   <% end %> 
 
   <%end %>
+
+  </div>

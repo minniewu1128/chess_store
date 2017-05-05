@@ -1,7 +1,7 @@
 <!-- create address as partial need to know where to ship things to -->
-<div class="container" >
 
-<div id="shipper-home">
+
+<div id="shipper-home" class="container">
 <h3 class = "teal-text text-darken-3">Shipping List</h3>
   <ul class="collapsible popout" data-collapsible="accordion">
 
@@ -9,17 +9,18 @@
     
     <% @orders_to_ship.each do |order| %>
       <li>
-        <div class="collapsible-header"><i class="material-icons icon-teal">bookmark</i>Date</div>
-        
+        <div class="collapsible-header"><i class="material-icons icon-teal">bookmark</i><b class = "left-align">Date: </b> <%=order.date.strftime("%b, %d %Y")%>
+
+        <div class = "right-align"> <b>Address:</b>
+        <%= render partial: 'partials/address_info', locals: {school: order.school} %></div>
+        </div>
+
         <div class="collapsible-body">
           
           <span>
             
-            <b>Address: </b> <%= render partial: 'partials/address_info', locals: {school: order.school} %>
-
               <%= render partial: 'partials/ship_order', locals: {order: order} %>
              
-
            </span>
         
           </div>
@@ -29,5 +30,4 @@
     <%end%>
   
   </ul>
-</div>
 </div>

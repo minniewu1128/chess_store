@@ -10,39 +10,51 @@
 
 <% if logged_in? && (current_user.role?(:manager) || current_user.role?(:admin) || current_user.role?(:shipper)) %>
   <%= render partial: "current_items", locals: {items: @boards, item_type: "boards"}  %>
+  <br/>
 
-
+  <br/>
   <%= render partial: "current_items", locals: {items: @pieces, item_type: "pieces"} %>
 
+  <br/>
 
+  <br/>
 
   <%= render partial: "current_items", locals: {items: @clocks, item_type: "clocks"} %>
+  <br/>
 
-
+  <br/>
+  
   <%= render partial: "current_items", locals: {items: @supplies, item_type: "supplies"} %>
 
+  <br/>
+
+  <br/>
  
 <% else %>  
 
 
   <%= render partial: "current_items1", locals: {items: @boards, item_type: "boards"}  %>
 
-  </br>
-  </br>
+   <br/>
+
+  <br/>
 
   <%= render partial: "current_items1", locals: {items: @pieces, item_type: "pieces"} %>
 
-  </br>
+  <br/>
 
-  </br>
+  <br/>
 
   <%= render partial: "current_items1", locals: {items: @clocks, item_type: "clocks"} %>
 
-  </br>
-  </br>
+  <br/>
+
+  <br/>
 
   <%= render partial: "current_items1", locals: {items: @supplies, item_type: "supplies"} %>
 
-  </br>
+  <br/>
+
+  <br/>
 
 <% end %>
