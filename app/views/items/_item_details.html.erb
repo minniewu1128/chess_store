@@ -11,9 +11,9 @@
   <b>Description</b>: <%= @item.description %>
 </p>
 
-<p>
-  <b>Price</b>: <%= @item.current_price.nil? ? 'N/A' : number_to_currency(@item.current_price) %>
-</p>
+<div id = 'current_price'>
+  <%= render :partial => 'current_price' %>
+</div>
 
 <% if logged_in? && (current_user.role?(:manager)||current_user.role?(:admin))%>
 <p>

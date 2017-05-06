@@ -1,4 +1,4 @@
-<div class="contain-to-grid">
+<div>
 <!--   <nav class="top-bar" data-topbar role="navigation">  -->
   
     <!-- Item options dropdown -->
@@ -19,19 +19,20 @@
     
       <!-- User profile options dropdown -->
       <% if logged_in? %>
-      <ul id="dropdown2" class="dropdown-content">
-      <li><%= link_to user_path(current_user) do%>
-        <i class="small material-icons prefix">perm_identity</i> Profile
-        <%end%>
-      </li>
+        <ul id="dropdown2" class="dropdown-content">
+          <li><%= link_to user_path(current_user) do%>
+            <i class="small material-icons prefix">perm_identity</i> Profile
+          <%end%>
+          </li>
 
       <li><%= link_to cart_path do%>
         <i class="small material-icons">shopping_cart</i>Cart <%=@cart_items.size%>
        
         <%end%>
       </li>
+      
       <li><%= link_to "Log Out", logout_path%></li>
-    </ul>
+        </ul>
     <%end%>
 
     
@@ -72,7 +73,7 @@
 
 
 
-    </section>
-    </div>
-  </nav>
-</div>
+    
+      </div>
+    </nav>
+  </div>

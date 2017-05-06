@@ -1,9 +1,14 @@
-<%= simple_form_for @item_price, html: { class: 'form-horizontal', multipart: true } do |f| %>
+<%= simple_form_for @item_price, html: { class: 'form-horizontal', multipart: true }, remote: true do |f| %>
   <fieldset>
     <legend><%= controller.action_name.capitalize %> Price</legend>
 
-    <%= f.input :item_id, collection: Item.active.to_a, include_blank: true, input_html: {class: "avg"} %>
+    <% @item = params[:this_item_id] %>
+
+    <%= f.input :item_id, :as => :hidden, :input_html => {:value => @item} %>
+
     <%= f.input :price, label: 'New Price', input_html: {class: "avg"} %>
+
+    <%= f.input :category, label: 'Category' %>
 
 
     <div class="form-actions">
