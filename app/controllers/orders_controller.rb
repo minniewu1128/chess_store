@@ -62,6 +62,8 @@ class OrdersController < ApplicationController
   end
 
   def destroy
+    @order.destroy
+    redirect_to :back, notice: "your successfully canceled the order."
   end
 
   def add_to_cart

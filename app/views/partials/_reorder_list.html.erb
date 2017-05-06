@@ -1,6 +1,7 @@
 
+<div id = "reorder_list">
+<h3 class = "teal-text text-darken-2"> Reorder List</h3>
 
-<h3 class = "teal-text text-darken-2">Reorder List</h3>
 
 <% unless @items_to_reorder.nil? || @items_to_reorder.empty? %>
   <table class="table table-striped">
@@ -12,26 +13,19 @@
         <th width='125'> </th>
       </tr>
     </thead>
+    
+
     <tbody>
       <% @items_to_reorder.each do |item| %>
-        <tr>
-          <td><%= link_to item.name, item_path(item) %></td>
-          <td><%= item.inventory_level %></td>
-          <td><%= item.reorder_level %></td>
-          <td>
-          <div class= "reorder_list" id = "reorder_list">
-          <%= link_to(new_purchase_path(item_id: item.id), remote: true, class: "waves-effect waves-light btn") do %> 
-          Reorder 
-            <% end %> </div>
-          </td>
-          </div>
-            
-       
-        </tr>
+        <%= render partial: 'partials/reorder_order_item_row', locals: {item: item} %>
       <% end %>
+    
+
+
     </tbody>
   </table>
 <% else %>
   <p>There are no items that need to be reordered at this time.</p>
 <% end %>
 
+</div>

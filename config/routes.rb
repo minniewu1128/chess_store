@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   # resources :order_items
   resources :schools
 
+  #Additional Routes for Users
+
+  get 'user_all_orders/:id' => 'users#user_all_orders', :as => :user_all_orders
+
   # Routes for order items
   patch'mark_as_shipped/:id' => 'order_items#mark_as_shipped', :as => :mark_as_shipped
   

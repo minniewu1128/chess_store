@@ -5,8 +5,18 @@
 
     <%= render partial: "profile", locals: {user: @user} %>
 
-<br/>
-<br/>
+  <br/>
+  <br/>
+</div>
+
+
+<div class = 'row col s4'>
+    <%= render partial: 'buy_again', locals: {user: @user} %>
+</div>
+
+
+
+<div class = 'row col s12'>
 <h4 class = "teal-text text-darken-2">Recent Orders</h4>
  
  <ul class="collapsible popout" data-collapsible="accordion">
@@ -40,6 +50,4 @@
         
 </div>
 
-<div class = 'row col s4'>
-    <%= render partial: 'buy_again', locals: {user: @user} %>
-</div>
+<%= link_to 'All Orders', user_all_orders_path(@user) %>

@@ -1,0 +1,30 @@
+   <ul class="collapsible popout" data-collapsible="accordion">
+
+    <% unless orders.nil? || orders.empty?%>
+      
+      <% orders.each do |order| %>
+        
+        <li>
+          <div class="collapsible-header"><i class="material-icons icon-teal">label_outline</i><b class = "left-align">Date: </b> <%=order.date.strftime("%b, %d %Y")%>
+
+          <div class = "right-align"> <b>Address:</b>
+          <%= render partial: 'partials/address_info', locals: {school: order.school} %></div>
+          </div>
+
+          <div class="collapsible-body">
+            
+            <span>
+              
+                <%= render partial: 'user_orders', locals: {order: order} %>
+               
+             </span>
+          
+            </div>
+     
+        
+        <%end%>
+
+        </li>
+      <%end%>
+    
+    </ul>

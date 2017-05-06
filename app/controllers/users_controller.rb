@@ -20,6 +20,11 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def user_all_orders
+    @orders = current_user.orders.chronological
+    @unshipped = current_user.orders.not_shipped.chronological
+  end
+
   #different when admin is ediitng user and when user is editing themself
 
   def create

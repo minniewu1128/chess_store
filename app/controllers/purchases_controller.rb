@@ -14,11 +14,14 @@ class PurchasesController < ApplicationController
     
     @purchase = Purchase.new(purchase_params)
     @purchase.date = Date.current
-    
-    if @purchase.save
-      redirect_to home_path, notice: "Successfully added a purchase for #{@purchase.quantity} #{@purchase.item.name}."
-    else
-      render action: 'new'
+    respond_to do |format|
+      if @purchase.save
+        format.html {redirect_to home_path, notice: "Successfully added a purchase for #{@purchase.quantity} #{@purchase.item.name}."}
+        @items_to_reorder = Item.need_reorder.alphabetical.to_a
+        format.js
+      else
+        format.html {render action: 'new'}
+      end
     end
   end
 

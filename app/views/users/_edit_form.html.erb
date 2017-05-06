@@ -1,0 +1,58 @@
+  <% if logged_in? && (params[:id].to_i == current_user.id)%>
+    <h3 class = "teal-text text-darken-2">Edit Profile </h3>
+  <% elsif logged_in? && (current_user.role?(:manager) || current_user.role?(:admin)) %>
+    <h3 class = 'teal-text text-darken-2'> Edit User  </h3>
+  <% end %>
+
+<%= simple_form_for @user, html: { class: 'form-horizontal', multipart: true } do |f| %>
+    
+ <!--  if editing user's personal account -->
+
+
+
+    
+    <!-- <div class ="row"> -->
+
+    
+        <%= f.input :first_name, input_html: {class: "avg"}, wrapper_html: {class: 'input-field'} %>
+
+        <%= f.input :last_name, input_html: {class: "avg"}, wrapper_html: {class: 'input-field'}%>
+
+        <%= f.input :password, wrapper_html: {class: 'input-field'}%>
+
+        <%= f.input :password_confirmation, wrapper_html: {class: 'input-field'}%>
+
+        <!-- select school or add a school, first do select school, ask in OH about simple form and relationships-->
+
+        <%= f.input :email, wrapper_html: {class: 'input-field'}%>
+
+        <%= f.input :phone, wrapper_html: {class: 'input-field'} %>
+
+        <!-- ask if managers can change whether or not customer is active -->
+       
+
+          <%# if logged_in? && (current_user.role?(:admin)||current_user.role?(:manager)) %>
+          <% if logged_in? && (current_user.role?(:admin) || current_user.role?(:manager)) %>
+            <%= f.input_field :active, as: :boolean, boolean_style: :inline %>
+            
+            <%= f.label :active %>
+          
+
+           <!--  <%#end %> -->
+
+
+          <%# #if logged_in? && current_user.role?(:admin) %>
+            <%= f.input :role, collection: User::ROLES, wrapper_html: {class: 'input-field'} %>
+          <%# end %>
+          <%end%>
+  
+<!--     </div> -->
+
+
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn waves-effect waves-light', :type => 'submit', :name => 'action' %>
+      <%= link_to 'Cancel', home_path, :class => 'btn waves-effect waves-light' %>
+    </div>
+
+<% end %>

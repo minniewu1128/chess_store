@@ -100,6 +100,9 @@ class Ability
             all_orders.include? o
         end
 
+        can :user_all_orders, User
+
+
     else
 
         can :index, Item

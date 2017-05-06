@@ -1,9 +1,11 @@
- <table class="table">
+ <table class="bordered">
                 
   <thead>
     <tr>
-      <th width="250">Item</th>
-      <th width="125">Quantity</th>
+      <th width="200">Item</th>
+      <th width="50">Price</th>
+      <th width="30">Quantity</th>
+      <th width="50">Subtotal</th>
     </tr>
    </thead>
 
@@ -11,9 +13,27 @@
        <% order.order_items.each do |order_item| %>
 
           <tr>
-            <td><%= link_to order_item.item.name, item_path(order_item.item) %></td>
-            <td><%= order_item.quantity %></td>                 
+            <td>          
+            <% if order_item.item.photo_url.nil? || order_item.item.photo_url.empty? %>
+            <%= image_tag('img_not_available.png', height: '50', width: '50', class: 'left-align')  %> 
+          <%else%>
+             <%= image_tag(order_item.photo_url, height: '50', width: '50', class: 'left')  %> 
+          <%end %> 
+          <br/>
+          <%= link_to order_item.item.name, item_path(order_item.item) %></td>
+            <td> <%= number_to_currency order_item.item.current_price %> </td>
+            <td><%= order_item.quantity %></td>    
+            <td><%= number_to_currency order_item.subtotal %> </td>            
           </tr>
           <%end %>
       </tbody>
     </table>
+
+  <h6 class = 'right-align'> <b>Shipping Cost</b> <%= number_to_currency(order.shipping_costs) %> </h6>
+  <br/>
+
+  <h5 class = 'right-align'> <b class = "teal-text text-darken-2">Total:</b> <%= number_to_currency(order.grand_total) %> </h5>
+
+     <%= link_to(order_path(order), method: 'delete', data: {confirm: "Are you sure you want to permanently delete this order?"}, class: 'button radius alert') do %>
+        &nbsp; <%= "Cancel order" %>
+      <% end %>
