@@ -38,6 +38,9 @@ gem 'cancancan', '1.15.0'
 gem 'simple_form'
 gem "nested_form"
 gem 'will_paginate'
+gem 'will_paginate-materialize'
+gem 'chart-js-rails'
+gem 'momentjs-rails'
 
 gem 'carrierwave', '1.0.0'
 

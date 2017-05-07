@@ -1,7 +1,7 @@
 <div class="row">
 
 <% unless items.nil? || items.empty? %>
-  <h5><%= item_type.capitalize %></h5>
+
 
       <% items.each do |item| %>
         <div class="col s6 m6">
@@ -41,8 +41,8 @@
             </div>
      <div id="modal1" class="modal bottom-sheet">
     <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
+      <h4>My Cart</h4>
+      <p><%=@cart_items%></p>
     </div>
     <div class="modal-footer">
       <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>

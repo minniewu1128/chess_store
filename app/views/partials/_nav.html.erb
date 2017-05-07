@@ -44,6 +44,11 @@
       </div>
         <ul class="right hide-on-med-and-down">
          <% if logged_in? %>
+          <li><%= link_to cart_path do%>
+        <i class="material-icons left">shopping_cart</i>Cart <%=@cart_items.size%>
+       
+        <%end%>
+      </li>
           <li><%=link_to "Welcome, #{current_user.first_name}", user_path(current_user), class: "dropdown-button",data: {activates: "dropdown2"} %></li>
           <% else %>
             <li><%= link_to "Log In", login_path %> </li>
@@ -56,11 +61,12 @@
         <!-- options for items -->
           <!-- <li class="has-dropdown"> -->
        <!--  <li class="dropdown-button" data-activates='dropdown1'> -->
-          <li><%= link_to "Items", "#!", class: "dropdown-button", data: {activates: "dropdown1"} %> </li>
+          <li><%= link_to "Products", "#!", class: "dropdown-button", data: {activates: "dropdown1"} %> </li>
           
         </li>
 
         <!-- options for purchases -->
+        <%if logged_in? && (current_user.role?(:manager) || current_user.role?(:admin ))%>
         <li>
           <%= link_to "Purchases", purchases_path %>
         </li>
@@ -69,6 +75,7 @@
         <li>
           <%= link_to "Prices", item_prices_path %>
         </li>
+        <%end%>
       </ul>
 
 

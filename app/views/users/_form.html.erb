@@ -3,9 +3,12 @@
 <%= simple_form_for @user, html: { class: 'form-horizontal', multipart: true } do |f| %>
     
     <%if !logged_in?%>
-      <h1>Sign Up</h1>
+      <h3 class = "teal-text text-darken-2">Sign Up</h3>
+      <br/>
+
+      <h5>Note: Please keep in mind that we only ship to schools, not to personal addresses.</h5>
     <% else %>
-      <h1>Add a New User</h1>
+      <h3>Add a New User</h3>
     <% end %>
     
     <!-- <div class ="row"> -->
@@ -29,18 +32,26 @@
         <!-- ask if managers can change whether or not customer is active -->
        
 
-          <%# if logged_in? && (current_user.role?(:admin)||current_user.role?(:manager)) %>
+          <% if logged_in? && (current_user.role?(:admin)||current_user.role?(:manager)) %>
 
             <%= f.input_field :active, as: :boolean, boolean_style: :inline %>
             
             <%= f.label :active %>
 
-           <!--  <%#end %> -->
+          <% else %>
+            <%= f.input :active, :as => :hidden, :input_html => {:value => true} %>
+
+          <%end %>
 
 
-          <%# #if logged_in? && current_user.role?(:admin) %>
+          <%if logged_in? && (current_user.role?(:admin))  %>
             <%= f.input :role, collection: User::ROLES, wrapper_html: {class: 'input-field'} %>
-          <%# end %>
+
+          <!-- managers can only create shippers and other managers -->
+          <% elsif logged_in? && (current_user.role?(:manager))%>
+            <%= f.input :role, collection: User::MANAGERS_CREATE_ROLES, wrapper_html: {class: 'input-field'} %>
+
+          <% end %>
  
   
 <!--     </div> -->
@@ -48,6 +59,8 @@
 
 
     <div class="form-actions">
+      <br/>
+      <br/>
       <%= f.submit nil, :class => 'btn waves-effect waves-light', :type => 'submit', :name => 'action' %>
       <%= link_to 'Cancel', home_path, :class => 'btn waves-effect waves-light' %>
     </div>

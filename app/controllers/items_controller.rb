@@ -14,6 +14,7 @@ class ItemsController < ApplicationController
     @supplies = Item.active.for_category('supplies').alphabetical.paginate(:page => params[:page]).per_page(10)    
     # get a list of any inactive items for sidebar
     @inactive_items = Item.inactive.alphabetical.to_a
+    
   end
 
   def index_boards

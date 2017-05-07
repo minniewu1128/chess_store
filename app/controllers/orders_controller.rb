@@ -7,10 +7,10 @@ class OrdersController < ApplicationController
   #is it possible to edit orders?
 
   #add to cart, remove from cart methods with routes
-
   def index
-    @orders = Order.all.chronological.to_a
+    @orders = Order.all.chronological.paginate(:page => params[:page]).per_page(10)
     #for shippers
+    @paid_orders = Order.paid.chronological.to_a
     @unshipped_orders = Order.not_shipped.chronological.to_a
     @paid_and_unshipped_orders = Order.paid.not_shipped.chronological.to_a
   end

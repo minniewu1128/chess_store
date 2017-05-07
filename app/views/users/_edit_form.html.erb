@@ -41,7 +41,7 @@
            <!--  <%#end %> -->
 
 
-          <%# #if logged_in? && current_user.role?(:admin) %>
+          <%if logged_in? && current_user.role?(:admin) %>
             <%= f.input :role, collection: User::ROLES, wrapper_html: {class: 'input-field'} %>
           <%# end %>
           <%end%>

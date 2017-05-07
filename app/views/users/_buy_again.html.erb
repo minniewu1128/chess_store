@@ -1,2 +1,41 @@
-<h4 class = "teal-text text-darken-2">Buy Again:</h4>
 
+<%unless current_user.orders.nil? || current_user.orders.empty? %>
+  <h4 class = "teal-text text-darken-2">Buy Again:</h4>
+  <% buy_again = current_user.orders.chronological.first.order_items.map{|oi| oi.item} %>
+  <%buy_again.each do |item|%>
+    <div class="col s12">
+      <div class="card hoverable">
+        <div class="card-image waves-effect waves-block waves-light">
+          <% if item.photo_url.nil? %>
+            <%=image_tag("Chess.jpg", class: "activator")%>
+          <% else %>
+            <%= image_tag(item.photo_url, class: "activator") %><
+          <% end %>
+                  
+        </div>
+                
+        <div class="card-content">
+                  
+          <span class="activator grey-text text-darken-4"><h6><%= item.name %></h6>
+
+            <i class="material-icons right">more_vert</i></span>
+                    
+              <p> <%= number_to_currency item.current_price %> </p>
+                    
+              <%= link_to('Full Details', item_path(item))%> 
+     
+                <%= form_tag add_to_cart_path, :method => 'get', html: { class: 'form-horizontal' } do %>
+                  <%= text_field :add_to_cart, :quantity %>
+                  <%= hidden_field :add_to_cart, :item_id, value: item.id %> 
+                    
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Add to Cart
+                      <i class="material-icons right">add_shopping_cart</i>
+                    </button>
+
+                <%end%>
+        </div>
+
+        </div>
+        </div>
+  <%end%>
+<%end%>

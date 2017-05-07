@@ -28,6 +28,8 @@ class User < ActiveRecord::Base
   # For use in authorizing with CanCan
   ROLES = [['Administrator', :admin],['Manager', :manager],['Shipper', :shipper],['Customer',:customer]]
 
+  MANAGERS_CREATE_ROLES = [['Manager', :manager], ['Shipper', :shipper]]
+
   def role?(authorized_role)
     return false if role.nil?
     role.downcase.to_sym == authorized_role

@@ -2,6 +2,7 @@
           <td><%= link_to item.name, item_path(item) %></td>
           <td><%= item.inventory_level %></td>
           <td><%= item.reorder_level %></td>
+          <td><%= number_to_currency item.current_manufacturer_price %> </td>
           <td>
           
           <div id = "reorder_list_form">

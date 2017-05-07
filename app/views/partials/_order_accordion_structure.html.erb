@@ -1,30 +1,60 @@
    <ul class="collapsible popout" data-collapsible="accordion">
 
     <% unless orders.nil? || orders.empty?%>
-      
+
+
       <% orders.each do |order| %>
         
         <li>
-          <div class="collapsible-header"><i class="material-icons icon-teal">label_outline</i><b class = "left-align">Date: </b> <%=order.date.strftime("%b, %d %Y")%>
+          <div class="collapsible-header"><i class="material-icons icon-teal">label_outline</i>
 
+          <div class = "left"><b>Order Id:</b> <%=order.id%> </div>
+
+          <div class = "right-align"><b>Date: </b> <%=order.date.strftime("%b, %d %Y")%> </div>
+
+          
           <div class = "right-align"> <b>Address:</b>
-          <%= render partial: 'partials/address_info', locals: {school: order.school} %></div>
+            <%= render partial: 'partials/address_info', locals: {school: order.school} %></div>
           </div>
 
           <div class="collapsible-body">
             
             <span>
               
-                <%= render partial: 'user_orders', locals: {order: order} %>
+            <% if current_user.role?(:customer) %>
+              <%= render partial: 'user_orders', locals: {order: order} %>
+
+            <%elsif current_user.role?(:manager) || current_user.role?(:admin) %>
+              <div class = 'left-align'><b>Ordered By:</b>  <%= order.user.proper_name %>          </div>
+
+              <div class = "left-align"> <b> School: </b> <%=order.school.name%> </div>
+
+   
+              <div class = 'left-align'><b>Paid? </b> <%= @paid_orders.include?(order) ? ' Yes': ' No' %> </div>
+
+              <div class = 'left-align'> 
+
+                <b> Shipped? </b> <%= !@unshipped_orders.include?(order) ? ' Yes' : ' No' %>
+              </div>
+
+              <div class = 'left-align' >
+                <b> Receipt: </b> <%= order.payment_receipt.nil? ? 'N/A' : order.payment_receipt %>
+              </div>
                
+
+              <%= render partial: 'order_items', locals: {order: order} %>
+
+            <% end %>
+                  
              </span>
           
             </div>
      
-        
+         
         <%end%>
 
         </li>
       <%end%>
     
     </ul>
+

@@ -8,9 +8,9 @@
 
     <%= f.input :price, label: 'New Price', input_html: {class: "avg"} %>
 
-    <%= f.input :category, label: 'Category' %>
+    <%= f.input :category, label: 'Category', collection: ItemPrice::CATEGORIES %>
 
-
+    <br/> <br/>
     <div class="form-actions">
       <%= f.submit nil, :class => 'button radius' %>
       <%= link_to 'Cancel', item_prices_path, :class => 'button alert radius' %>

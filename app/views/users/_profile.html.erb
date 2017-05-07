@@ -37,13 +37,25 @@
 
               <tr>
                 <td>
-                    <b>email:</b>
+                    <b>Email:</b>
                 </td>
 
                 <td>
                     <%= user.email %>
                 </td>
               </tr>
+              
+              <% if current_user.role?(:admin) || current_user.role?(:shipper) || current_user.role?(:manager) %>
+                <tr>
+                  <td>
+                      <b>Role:</b>
+                  </td>
+
+                  <td>
+                      <%= user.role %>
+                  </td>
+                </tr>
+              <% end %>
 
             </tbody>
       </table>
