@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   # Routes for order items
   patch'mark_as_shipped/:id' => 'order_items#mark_as_shipped', :as => :mark_as_shipped
 
-
+  # Routes for orders
+  get 'payment_confirm/:id' => 'orders#payment_confirm', :as => :payment_confirm
   
   # Additional Routes for Items
 

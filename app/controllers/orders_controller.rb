@@ -2,7 +2,8 @@ class OrdersController < ApplicationController
   include ChessStoreHelpers::Cart
   include ChessStoreHelpers::Shipping
   before_action :check_login
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :payment_confirm]
+  require 'base64'
 
   #is it possible to edit orders?
 
@@ -17,8 +18,27 @@ class OrdersController < ApplicationController
 
   def show
     @total_weight = @order.total_weight
-    @payment_receipt = @order.generate_payment_receipt
+    @payment_receipt = Base64.decode64(@order.payment_receipt)
   end
+
+  def payment_confirm
+    @receipt =  Base64.decode64(@order.payment_receipt)
+    @a = @receipt.split(';')
+    @payment_receipt = []
+    @a.each do |thing|
+      b = thing.split(':')
+      @payment_receipt << b
+    end
+    
+    @order_id = @payment_receipt[0][1]
+    @amount_paid =  @payment_receipt[1][1]
+    @date = @payment_receipt[2][1]
+    @card = @payment_receipt[3][1]
+    
+
+
+  end
+
 
   def new
     @order = Order.new
@@ -52,7 +72,7 @@ class OrdersController < ApplicationController
       save_each_item_in_cart(@order)
       destroy_cart
       create_cart
-      return redirect_to cart_path, notice: "Order complete!"
+      return redirect_to payment_confirm_path(@order), notice: "Order complete!"
     else
       return render 'checkout', notice: "An error occured while placing your order."
     end
@@ -75,6 +95,7 @@ class OrdersController < ApplicationController
 
     end
     @cart_items = get_list_of_items_in_cart
+    @list = get_list_of_items_in_cart
     redirect_to cart_path
 
   end
