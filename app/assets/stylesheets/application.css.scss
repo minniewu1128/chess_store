@@ -15,10 +15,34 @@
  */
 
 
-        
+.card-image {
+    height: 300px;
+}
+
+.card-image img {
+    height: 300px;
+}
+
+
+blockquote {
+    border-left: 3px solid #795548 !important;
+}
+
+
+@import 'materialize';
+
+
+.container {
+    width: 80% !important;
+}
+
+ul.tabs {
+    line-height: 0 !important;
+    font-family: 'Gafata', sans-serif !important;
+}
 
 h1 {
-    font-family: 'Belleza', sans-serif;
+    font-family: 'Satisfy', cursive;
 }
 
 h2 {
@@ -30,6 +54,10 @@ h3 {
 }
 
 h4 {
+    font-family: 'Belleza', sans-serif;
+}
+
+h5 {
     font-family: 'Belleza', sans-serif;
 }
 
@@ -65,9 +93,9 @@ i.icon-blue{
 
 
 .tabs .indicator {
-    background-color: #00bfa5 !important;
+    background-color: #795548 !important;
 }
 
 .tabs .tab a{
-    color: #00bfa5 !important;
+    color: #795548 !important;
 }

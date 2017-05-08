@@ -165,6 +165,22 @@ class OrderTest < ActiveSupport::TestCase
       assert Order.new.respond_to? :expiration_month
       assert Order.new.respond_to?(:expiration_month=)
     end
+
+    should "have accessor methods for creating a new school" do
+
+      assert Order.new.respond_to?(:school_name)
+      assert Order.new.respond_to?(:school_name=)
+      assert Order.new.respond_to?(:school_street_1)
+      assert Order.new.respond_to?(:school_street_1=)
+      assert Order.new.respond_to?(:school_street_2)
+      assert Order.new.respond_to?(:school_street_2=)
+      assert Order.new.respond_to?(:school_city)
+      assert Order.new.respond_to?(:school_city=)
+      assert Order.new.respond_to?(:school_state)
+      assert Order.new.respond_to?(:school_state=)
+      assert Order.new.respond_to?(:school_zip)
+      assert Order.new.respond_to?(:school_zip=)
+    end
     
     should "identify different types of credit card by their pattern" do
       # lengths are all correct for these tests, but prefixes are not

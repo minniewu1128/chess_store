@@ -5,32 +5,34 @@
 
       <% items.each do |item| %>
         <div class="col s6 m6">
-          <div class="card hoverable">
-            <div class="card-image waves-effect waves-block waves-light">
+          <div class="card horizontal">
+            <div class="card-image">
                 <% if item.photo_url.nil? %>
-                  <%=image_tag("Chess.jpg", class: "activator")%>
+                  <%=image_tag("Chess.jpg")%>
                 <% else %>
-                  <%= image_tag(item.photo_url, class: "activator") %><
+                  <%= image_tag(item.photo_url) %>
                 <% end %>
-
-
               
             </div>
-            
+          
+          <div class = "card-stacked">
             <div class="card-content">
               
-              <span class="activator grey-text text-darken-4"><h6><%= item.name %></h6>
+              <h5 class = 'brown-text'><%= item.name %></h5>
 
-              <i class="material-icons right">more_vert</i></span>
+              <h6><%= number_to_currency item.current_price %></h6>
                 
-                <p> <%= number_to_currency item.current_price %> </p>
-                
-                 <%= link_to('Details', item_path(item))%> 
-
-
-           
+                <%= link_to('Details', item_path(item))%> 
+        
+            
+            
                 <%= form_tag add_to_cart_path, :method => 'get', html: { class: 'form-horizontal' } do %>
-                <%= text_field :add_to_cart, :quantity %>
+                  
+                  <%= label_tag "add_to_cart[quantity]", 'Quantity' %>
+                  <%= text_field :add_to_cart, :quantity %>
+
+                
+          
                 <%= hidden_field :add_to_cart, :item_id, value: item.id %> 
 
                 <button class="btn waves-effect waves-light" type="submit" name="action" data-remote='true'>Add to Cart
@@ -38,16 +40,13 @@
                 </button>
 
                 <%end%>
-            </div>
+           
+          </div>
+          </div>
+          </div>
+        </div>
 
-
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4"><%= item.name %><i class="material-icons right">close</i></span>
-      <p> <%= item.description %></p>
-    </div>
-  </div>
-
-  </div>
+     
 
           
 

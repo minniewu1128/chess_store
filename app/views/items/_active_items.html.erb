@@ -1,10 +1,11 @@
 
+
+
 <% if @boards.empty? && @pieces.empty? && @clocks.empty? && @supplies.empty? %>
   <h3>There are no items in the system at this time</h3>
 <% else %>
-  <h3 class = "teal-text text-darken-2">All Products</h3>
-  <br/>
-
+  <h2 class = "teal-text text-darken-2">All Products</h2>
+ 
 <%end %>
 
 
@@ -33,14 +34,14 @@
  
 <% else %>  
 
-  <h5>Chess Boards</h5>
+  <h4 class = 'brown-text '>Chess Boards</h4>
   <%= render partial: "current_items1", locals: {items: @boards, item_type: "boards"}  %>
 
    <br/>
 
   <br/>
 
-  <h5> Chess Pieces </h5>
+  <h4 class = 'brown-text'> Chess Pieces </h4>
   <%= render partial: "current_items1", locals: {items: @pieces, item_type: "pieces"} %>
  
   <br/>
@@ -48,7 +49,7 @@
   <br/>
 
 
-  <h5> Clocks</h5>
+  <h4 class = 'brown-text'> Clocks</h4>
   <%= render partial: "current_items1", locals: {items: @clocks, item_type: "clocks"} %>
   
 
@@ -56,7 +57,7 @@
 
   <br/>
 
-  <h5>Supplies</h5>
+  <h4 class = 'brown-text'>Supplies</h4>
   <%= render partial: "current_items1", locals: {items: @supplies, item_type: "supplies"} %>
 
   <br/>

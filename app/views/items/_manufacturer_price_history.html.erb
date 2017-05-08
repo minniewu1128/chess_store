@@ -1,0 +1,18 @@
+<div id = "manufacturer-price-history">
+    <% unless @manufacturer_price_history.empty? %>
+        <div class="panel clearfix">
+            <h4 class = 'brown-text'>Manufacturer Price History</h4>
+                <ul>
+                    <% @manufacturer_price_history.each do |change| %>
+                    <%= number_to_currency change.price %>&nbsp;&nbsp;&nbsp;(<%= change.start_date.strftime('%m/%d/%y') %>)<br />
+                    <% end %>
+                </ul>
+
+    
+            <%= link_to("Update Manufacturer Price", new_item_price_path(this_item_id: @item.id), remote: true, class: 'button tiny radius', id: 'new-item-price-link') %>
+  
+  
+        </div>
+
+    <% end %>
+</div>

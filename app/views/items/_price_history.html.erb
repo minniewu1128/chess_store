@@ -2,7 +2,7 @@
 <div id = "price-history">
     <% unless @price_history.empty? %>
         <div class="panel clearfix">
-            <h3>Price History</h3>
+            <h4 class = 'brown-text text-darken-2'>Wholesale Price History</h4>
                 <ul>
                     <% @price_history.each do |change| %>
                     <%= number_to_currency change.price %>&nbsp;&nbsp;&nbsp;(<%= change.start_date.strftime('%m/%d/%y') %>)<br />
@@ -10,7 +10,7 @@
                 </ul>
 
     
-            <%= link_to("Update Price", new_item_price_path(this_item_id: @item.id), remote: true, class: 'button tiny radius', id: 'new-item-price-link') %>
+            <%= link_to("Update Wholesale Price", new_item_price_path(this_item_id: @item.id), remote: true, class: 'button tiny radius', id: 'new-item-price-link') %>
   
   
         </div>

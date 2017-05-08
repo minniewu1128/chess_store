@@ -2,11 +2,22 @@
   <div class="col s8">
     <%= render :partial => "item_details" %>
   </div>
+
+ 
   <div class="col s4">
     <% if logged_in? && (current_user.role?(:manager)||current_user.role?(:admin))%>
-    <%= render :partial => "price_history" unless @price_history.empty?%>
-    <%end%>
+     <blockquote>
+        <%= render :partial => "price_history" unless @price_history.empty?%>
+    </blockquote>
+
+    <blockquote>
+    <%= render partial: 'manufacturer_price_history' unless @manufacturer_price_history.empty? %>
+        <%end%>
+    </blockquote>
+    
+    <blockquote>
     <%= render :partial => "similar_items" unless @similar_items.empty?%>
+    </blockquote>
   </div>
 </div>
 

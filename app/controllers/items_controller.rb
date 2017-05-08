@@ -44,7 +44,8 @@ class ItemsController < ApplicationController
   def show
     # get the price history for this item,should only be seen ny 
     if logged_in? && (current_user.role?(:manager)||current_user.role?(:admin))
-      @price_history = @item.item_prices.chronological.to_a
+      @price_history = @item.item_prices.wholesale.chronological.to_a
+      @manufacturer_price_history = @item.item_prices.manufacturer.chronological.to_a
     end
     # everyone sees similar items in the sidebar
     @similar_items = Item.for_category(@item.category).active.alphabetical.to_a - [@item]
