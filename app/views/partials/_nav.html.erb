@@ -25,11 +25,6 @@
           <%end%>
           </li>
 
-      <li><%= link_to cart_path do%>
-        <i class="small material-icons">shopping_cart</i>Cart <%=@cart_items.size%>
-       
-        <%end%>
-      </li>
       
       <li><%= link_to "Log Out", logout_path%></li>
         </ul>
@@ -44,15 +39,20 @@
       </div>
         <ul class="right hide-on-med-and-down">
          <% if logged_in? %>
+
+         <li> <%= link_to 'My Orders', user_all_orders_path(current_user) %> </li>
+
           <li><%= link_to cart_path do%>
-        <i class="material-icons left">shopping_cart</i>Cart <%=@cart_items.size%>
+            <i class="material-icons left">shopping_cart</i>Cart <%=@cart_items.size%>
        
-        <%end%>
-      </li>
-          <li><%=link_to "Welcome, #{current_user.first_name}", user_path(current_user), class: "dropdown-button",data: {activates: "dropdown2"} %></li>
-          <% else %>
+            <%end%>
+          </li>
+          
+          <li><%=link_to "Welcome, #{current_user.first_name}", user_path(current_user), class: "dropdown-button",data: {activates: "dropdown2"} %>
+          </li>
+        <% else %>
             <li><%= link_to "Log In", login_path %> </li>
-        <%end%>
+          <%end%>
         </ul>
 
         <ul class="right hide-on-med-and-down">
@@ -61,7 +61,7 @@
         <!-- options for items -->
           <!-- <li class="has-dropdown"> -->
        <!--  <li class="dropdown-button" data-activates='dropdown1'> -->
-          <li><%= link_to "Products", "#!", class: "dropdown-button", data: {activates: "dropdown1"} %> </li>
+          <li><%= link_to "Products", items_path%> </li>
           
         </li>
 

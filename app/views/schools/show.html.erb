@@ -1,30 +1,63 @@
-<div class="row">
+<div class="row col s8">
   
     <h3 class = 'teal-text text-darken-2' ><%= @school.name %></h3>
 
+      <table class = 'bordered'>
 
-<b> Address: </b> <%= render partial: 'partials/address_info', locals: {school: @school} %>
+        <tbody>
+          <tr>
+            <td> <b> Address: </b> </td>
+            <td> <%= render partial: 'partials/address_info', locals: {school: @school} %> </td>
+          </tr>
 
-<p>
-  <b>Grade Range</b>:
-  
-  <% if !@school.min_grade.nil? && !@school.max_grade.nil? && (@school.min_grade != @school.max_grade) %>
-    <%=@school.min_grade %>-<%=@school.max_grade%>
+          <tr>
+            <td width> <b> Zip Code: </b> </td>
+            <td> <%= @school.zip%> </td>
+          </tr>
+         
+          <tr>
+            <td width> <b> State: </b> </td>
+            <td width> <%= @school.state %> </td>
+          </tr>
 
-  <%elsif @school.min_grade.nil?&& !@school.max_grade.nil?%>
-    <%=@school.max_grade%>
-  
-  <%elsif !@school.min_grade.nil? && @school.max_grade.nil? %>
-    <%= @school.min_grade %>
 
-  <% else %>
-    'N/A'
+          <tr>
+            <td> <b>Grade Range</b>: </td>
+            <td>
+              <p>
+                <% if !@school.min_grade.nil? && !@school.max_grade.nil? && (@school.min_grade != @school.max_grade) %>
+                  <%=@school.min_grade %>-<%=@school.max_grade%>
 
-   <%end%>
+                <%elsif @school.min_grade.nil?&& !@school.max_grade.nil?%>
+                  <%=@school.max_grade%>
+                
+                <%elsif !@school.min_grade.nil? && @school.max_grade.nil? %>
+                  <%= @school.min_grade %>
 
-</p>
+                <% else %>
+                  'N/A'
+                 <%end%>
 
-  <b>Active</b>: <%= @school.active ? 'Yes' : 'No' %>
-</p>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td> <b>Active:</b></td>
+            <td><%= @school.active ? 'Yes' : 'No' %> </td>
+          </tr>
+        </tbody>
+      </table>
+
+  <br/> <br/>
+  <%= render partial: "partials/object_options", locals: {model_name: "school", object: @school}  %>
+
+
+ 
+
+
+
+   
+
 
 </div>
+

@@ -17,6 +17,7 @@ class OrdersController < ApplicationController
 
   def show
     @total_weight = @order.total_weight
+    @payment_receipt = @order.generate_payment_receipt
   end
 
   def new
@@ -71,11 +72,15 @@ class OrdersController < ApplicationController
 
     quantity.times do 
       add_item_to_cart(params[:add_to_cart][:item_id])
-    end
 
+    end
+    @cart_items = get_list_of_items_in_cart
     redirect_to cart_path
-    #pass in item_id as parameter (try to do this with ajax)
+
   end
+
+    #pass in item_id as parameter (try to do this with ajax)
+  
 
   def remove_from_cart
     #see if you can change number of items in cart

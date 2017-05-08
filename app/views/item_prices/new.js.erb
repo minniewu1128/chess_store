@@ -1,1 +1,4 @@
 $('#new-item-price-link').hide().after('<%= j render("form") %>');
+  $('#new_price').ready(function() {
+    $('select').material_select();
+  });

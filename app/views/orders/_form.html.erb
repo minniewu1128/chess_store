@@ -6,9 +6,10 @@
     <%= f.input :expiration_year %>
     <%= f.input :expiration_month %>
     <%= f.input :school_id, collection: School.all.active.alphabetical.map{|s| [s.name, s.id]}, include_blank: true, input_html: {class: "avg"} %>
-    
+
     <a class="waves-effect waves-light btn" onclick="$('#create-school').show(600)">Add a New School</a>
     
+    <br/>
     <div id = "create-school">
         <%= f.input :school_name, label: "Name" %>
         <%= f.input :school_street_1, label: "Street Address Line 1" %>
@@ -19,10 +20,10 @@
     </div>
 
     
-
+    <br/>
     <div class="form-actions">
-      <%= f.submit nil, :class => 'button radius' %>
-      <%= link_to 'Cancel', items_path, :class => 'button alert radius' %>
+      <%= f.submit nil, :class => 'waves-effect waves-light btn' %>
+      <%= link_to 'Cancel', items_path, :class => 'waves-effect waves-light btn' %>
     </div>
 
 <% end %>
