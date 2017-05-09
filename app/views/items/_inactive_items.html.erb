@@ -1,6 +1,7 @@
+<blockquote>
 <% unless @inactive_items.empty? %>
   <div class="panel clearfix">
-    <h3>Inactive Items</h3>
+    <h4 class = "brown-text text-darken-2">Inactive Items</h4>
     <ul>
       <% @inactive_items.each do |item| %>
         <li><%= link_to item.name, item_path(item) %></li>
@@ -8,3 +9,4 @@
     </ul>
   </div>
 <% end %>
+</blockquote>

@@ -43,14 +43,31 @@
         <% if logged_in? %>
 
           <% if current_user.role?(:customer) %>
-          <li> <%= link_to 'My Orders', user_all_orders_path(current_user) %> </li>
+            <li> <%= link_to 'My Orders', user_all_orders_path(current_user) %> </li>
 
-          <li><%= link_to cart_path do%>
-            <i class="material-icons left">shopping_cart</i>Cart <%=@cart_items.size%>
+            <li><%= link_to cart_path do%>
+              <i class="material-icons left">shopping_cart</i>Cart <%=@cart_items.size%>
      
-            <%end%>
-          <%end %>
-          </li>
+              <%end%>
+            </li>
+
+          <%elsif(current_user.role?(:manager) || current_user.role?(:admin ))%>
+            <li>
+              <%= link_to "Purchases", purchases_path %>
+            </li>
+
+            <!-- options for prices -->
+            <li>
+              <%= link_to "Prices", item_prices_path %>
+            </li>
+
+            <li>
+              <%= link_to "Orders", orders_path %>
+            </li>
+          
+
+
+          <%end%>
         
           <li><%=link_to "Welcome, #{current_user.first_name}", user_path(current_user), class: "dropdown-button",data: {activates: "dropdown2"} %>
           </li>
@@ -67,16 +84,7 @@
           
 
         <!-- options for purchases -->
-        <%if logged_in? && (current_user.role?(:manager) || current_user.role?(:admin ))%>
-        <li>
-          <%= link_to "Purchases", purchases_path %>
-        </li>
 
-        <!-- options for prices -->
-        <li>
-          <%= link_to "Prices", item_prices_path %>
-        </li>
-        <%end%>
       </ul>
 
       </div>

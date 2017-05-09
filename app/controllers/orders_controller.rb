@@ -83,21 +83,27 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    @order.destroy
-    redirect_to :back, notice: "your successfully canceled the order."
+
+    if @order.destroy
+      redirect_to :back, notice: "You successfully canceled the order."
+    else
+      redirect_to :back, notice: "This order cannot be canceled because some items have already been shipped. If applicable, pending parts of this order have been canceled."
+
+    end
   end
 
   def add_to_cart
+    :check_login
     quantity = Integer(params[:add_to_cart][:quantity])
 
     quantity.times do 
       add_item_to_cart(params[:add_to_cart][:item_id])
-
     end
-
     respond_to do |format|
       @cart_items = get_list_of_items_in_cart
       @list = get_list_of_items_in_cart
+      @cost = calculate_cart_items_cost
+      @shipping_cost = calculate_cart_shipping
       format.js
       #redirect_to cart_path 
     end

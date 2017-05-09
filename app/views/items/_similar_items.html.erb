@@ -1,6 +1,6 @@
 <% unless @similar_items.empty? %>
   <div>
-    <h4 class = 'brown-text'>Similar Items</h4>
+    <h4 class = 'brown-text text-darken-2'>Similar Items</h4>
     <ul>
       <% @similar_items.each do |item| %>
         <li><%= link_to item.name, item_path(item) %></li>

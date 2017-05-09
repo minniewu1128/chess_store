@@ -25,7 +25,8 @@
                 <%= link_to('Details', item_path(item))%> 
         
             
-            
+         
+
                 <%= form_tag add_to_cart_path, :method => 'get', html: { class: 'form-horizontal' },remote:true do %>
                   
                   <%= label_tag "add_to_cart[quantity]", 'Quantity' %>
@@ -41,6 +42,7 @@
 
               
                 <%end%>
+
            
           </div>
           </div>

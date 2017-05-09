@@ -13,9 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery_nested_form
-//= require turbolinks
-//= require materialize-sprockets
 //= require_tree .
+//= require materialize
 //= require Chart
 //= require moment
   
@@ -41,7 +40,10 @@
     $('.collapsible').collapsible();
   });
 
-  
+    $('#select-school').ready(function() {
+    $('select').material_select('destroy');
+    $('select').material_select();
+  });
 
 $(document).ready(function(){
     $('.dropdown-button').dropdown({

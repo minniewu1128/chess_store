@@ -8,13 +8,13 @@
 
     <% if logged_in? && (current_user.role?(:admin) || current_user.role?(:manager))%>
       <%= link_to(eval("edit_#{model_name}_path(object)"), class: 'waves-effect waves-light btn') do %>
-        &nbsp;<%= "Edit #{opt}" %>
+        &nbsp;<%= "Edit #{model_name.capitalize}" %>
       <% end %>
-    <% end %>
-
+  
     
     
-    <%= link_to(eval("#{model_name}_path(object)"), method: 'delete', data: {confirm: "Are you sure you want to permanently delete #{opt}"}, class: 'waves-effect waves-light btn') do %>
-        &nbsp;<%= "Delete #{model_name.capitalize}" %>
+      <%= link_to(eval("#{model_name}_path(object)"), method: 'delete', data: {confirm: "Are you sure you want to permanently delete #{opt}"}, class: 'waves-effect waves-light btn') do %>
+          &nbsp;<%= "Delete #{model_name.capitalize}" %>
+      <% end %>
     <% end %>
   </div>
