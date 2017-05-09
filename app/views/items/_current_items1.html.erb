@@ -20,13 +20,13 @@
               
               <h5 class = 'brown-text'><%= item.name %></h5>
 
-              <h6><%= number_to_currency item.current_price %></h6>
+              <p><%= number_to_currency item.current_price %></p>
                 
                 <%= link_to('Details', item_path(item))%> 
         
             
             
-                <%= form_tag add_to_cart_path, :method => 'get', html: { class: 'form-horizontal' } do %>
+                <%= form_tag add_to_cart_path, :method => 'get', html: { class: 'form-horizontal' },remote:true do %>
                   
                   <%= label_tag "add_to_cart[quantity]", 'Quantity' %>
                   <%= text_field :add_to_cart, :quantity %>
@@ -39,6 +39,7 @@
                   <i class="material-icons right">add_shopping_cart</i>
                 </button>
 
+              
                 <%end%>
            
           </div>

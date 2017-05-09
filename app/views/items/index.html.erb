@@ -10,26 +10,28 @@
 
         <div class="col s12">
             <ul class="tabs">
-                <li class="tab col s3"><a href="#all">All</a></li>
-                <li class="tab col s3"><a href="#boards">Boards</a></li>
-                <li class="tab col s3 "><a href="#pieces">Pieces</a></li>
-                <li class="tab col s3"><a href="#clocks">Clocks</a></li>               
-                <li class="tab col s3"><a href="#supplies">Supplies</a></li>
+                <li class="tab"><a href="#all">All</a></li>
+                <li class="tab"><a href="#boards">Boards</a></li>
+                <li class="tab"><a href="#pieces">Pieces</a></li>
+                <li class="tab"><a href="#clocks">Clocks</a></li>               
+                <li class="tab"><a href="#supplies">Supplies</a></li>
               </ul>
         </div>
       
           
-
           <div id="all" class="col s12">
 
             <%= render partial: 'active_items' %>
+          
           </div>
           
+      
           <div id="boards" class="col s12">
             <h2 class = 'teal-text text-darken-2'>Products</h2>
             <h4 class = 'brown-text'>Chess Boards </h4>
             <%= render partial: "current_items1", locals: {items: @boards, item_type: "boards"}  %>
           </div>
+
 
 
           <div id="pieces" class="col s12">

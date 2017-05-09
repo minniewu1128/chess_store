@@ -1,4 +1,6 @@
 
 $('#new-item-price-link').show();
+$('#new-price-form').hide();
 $('#price-history').replaceWith('<%= j render("items/price_history") %>');
+$('#manufacturer_price_history').replaceWith('<%= j render("items/manufacturer_price_history") %>');
 $('#current_price').replaceWith('<%= j render("items/current_price") %>');

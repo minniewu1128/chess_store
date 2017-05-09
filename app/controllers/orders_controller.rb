@@ -94,9 +94,16 @@ class OrdersController < ApplicationController
       add_item_to_cart(params[:add_to_cart][:item_id])
 
     end
-    @cart_items = get_list_of_items_in_cart
-    @list = get_list_of_items_in_cart
-    redirect_to cart_path
+
+    respond_to do |format|
+      @cart_items = get_list_of_items_in_cart
+      @list = get_list_of_items_in_cart
+      format.js
+      #redirect_to cart_path 
+    end
+
+
+    
 
   end
 

@@ -17,7 +17,7 @@
             <td><%= order_item.quantity %></td>
             <td class = "right-align">
               <div class= "shipping" id = "shipping">
-                <%= link_to "Shipped", mark_as_shipped_path(order_item), :method => :PATCH, remote: true %>
+                <%= link_to "Ship Item", mark_as_shipped_path(order_item), :method => :PATCH, remote: true %>
               </div>
             </td>                    
           </tr>

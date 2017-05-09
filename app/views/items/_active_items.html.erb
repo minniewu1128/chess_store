@@ -1,6 +1,5 @@
 
 
-
 <% if @boards.empty? && @pieces.empty? && @clocks.empty? && @supplies.empty? %>
   <h3>There are no items in the system at this time</h3>
 <% else %>
@@ -10,7 +9,7 @@
 
 
 
-<% if logged_in? && (current_user.role?(:manager) || current_user.role?(:admin) || current_user.role?(:shipper)) %>
+<% if logged_in? && (current_user.role?(:manager) || current_user.role?(:admin))%>
   <%= render partial: "current_items", locals: {items: @boards, item_type: "boards"}  %>
   <br/>
 
@@ -37,31 +36,24 @@
   <h4 class = 'brown-text '>Chess Boards</h4>
   <%= render partial: "current_items1", locals: {items: @boards, item_type: "boards"}  %>
 
-   <br/>
+  <div class="divider"></div>
 
-  <br/>
 
   <h4 class = 'brown-text'> Chess Pieces </h4>
   <%= render partial: "current_items1", locals: {items: @pieces, item_type: "pieces"} %>
  
-  <br/>
-
-  <br/>
-
+  <div class="divider"></div>
 
   <h4 class = 'brown-text'> Clocks</h4>
   <%= render partial: "current_items1", locals: {items: @clocks, item_type: "clocks"} %>
   
 
-  <br/>
-
-  <br/>
+  <div class="divider"></div>
 
   <h4 class = 'brown-text'>Supplies</h4>
   <%= render partial: "current_items1", locals: {items: @supplies, item_type: "supplies"} %>
 
-  <br/>
+  <div class="divider"></div>
 
-  <br/>
 
 <% end %>

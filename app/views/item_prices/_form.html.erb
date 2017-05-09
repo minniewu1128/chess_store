@@ -1,6 +1,6 @@
-<div id = "new_price" >
+<div id = "new-price-form" >
 
-<%= simple_form_for @item_price, html: { class: 'form-horizontal', multipart: true }, remote: true do |f| %>
+<%= simple_form_for @item_price, html: { class: 'form-horizontal', multipart: true, id: 'new_wholesale_price_form' }, remote: true do |f| %>
   <fieldset>
     <legend><%= controller.action_name.capitalize %> Price</legend>
 
@@ -11,7 +11,7 @@
     <%= f.input :price, label: 'New Price', input_html: {class: "avg"} %>
 
 
-    <%= f.input :category, label: 'Category', collection: ItemPrice::CATEGORIES %>
+    <%= f.input :category, collection: ItemPrice::CATEGORIES  %>
 
     <br/> <br/>
     <div class="form-actions">
@@ -22,3 +22,4 @@
 <% end %>
 
 </div>
+

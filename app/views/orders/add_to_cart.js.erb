@@ -1,14 +1,16 @@
 
 $('#cart').replaceWith('<%= j render("items/cart_partial") %>');
 
+$('.modal').modal();
+
   $('#cart').ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal2').modal('open');
   });
           
 
+$('#modal2').modal('open');
 
-$('.modal').modal();
 
 
 

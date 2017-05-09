@@ -15,7 +15,27 @@
  */
 
 
+@import 'materialize';
+
+.outermost_cart {
+    background-color: #6d4c41;
+}
+
+#outer_cart {
+    padding: 15px;
+    background-color: #FFFFFF;
+}
+
+.divider {
+    height: 2px !important;
+    background-color: #bcaaa4 !important;
+}
+
 .card-image {
+    height: 300px;
+}
+
+.card{
     height: 300px;
 }
 
@@ -29,7 +49,7 @@ blockquote {
 }
 
 
-@import 'materialize';
+
 
 
 .container {

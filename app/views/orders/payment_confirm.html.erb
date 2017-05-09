@@ -1,16 +1,18 @@
 <div class = 'col s8'>
 <h3 class = 'teal-text text-darken-2'>Payment Confirmation</h3>
 
+<div class = 'card-panel'>
 
-<h5> Payment Receipt </h5>
-
-<b>Order Number: </b> <%= @order_id %>
-<br/>
-<b>Total Price:</b><%=  number_to_currency @amount_paid %>
-<br/>
-<b>Payment Date</b><%=@date.to_date.strftime("%b, %d %Y") %>
-<br/>
-<b>Credit Card</b> <%= @card %>
+    <h5 class> <b>Payment Receipt</b> </h5>
+    <br/>
+    <b>Order Number: </b> <%= @order_id %>
+    <br/>
+    <b>Total Price: </b><%=  number_to_currency @amount_paid %>
+    <br/>
+    <b>Payment Date: </b><%=@date.to_date.strftime("%b, %d %Y") %>
+    <br/>
+    <b>Credit Card Information: </b> <%= @card %>
+    </div>
 </div>
 
 <div class = 'col s4'>

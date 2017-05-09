@@ -8,10 +8,6 @@
                     <%= number_to_currency change.price %>&nbsp;&nbsp;&nbsp;(<%= change.start_date.strftime('%m/%d/%y') %>)<br />
                     <% end %>
                 </ul>
-
-    
-            <%= link_to("Update Wholesale Price", new_item_price_path(this_item_id: @item.id), remote: true, class: 'button tiny radius', id: 'new-item-price-link') %>
-  
   
         </div>
 

@@ -1,5 +1,5 @@
 
-<%# render :partial => 'general_home' %>
+
 <%if logged_in? && current_user.role?(:manager) %>
   <%= render :partial => 'manager_home' %>
 <%elsif logged_in? && current_user.role?(:shipper) %>
