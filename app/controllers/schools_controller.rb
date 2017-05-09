@@ -23,6 +23,9 @@ class SchoolsController < ApplicationController
     def edit
     end
 
+    def destroy
+    end
+
     private
     
     def set_school
