@@ -1,3 +1,6 @@
+
+
+<div id class = "card-panel">
 <%= simple_form_for @order, html: { class: 'form-horizontal', multipart: true } do |f| %>
 
     
@@ -12,7 +15,7 @@
     
 
     <br/>
-    <a class="waves-effect waves-light btn" onclick="$('#create-school').show(600)">Add a New School</a>
+    <a class="waves-effect waves-light btn" onclick="$('#create-school').show(600)">Ship to a New School</a>
     
     <br/>
     
@@ -29,8 +32,11 @@
     
     <br/>
     <div class="form-actions">
-      <%= f.submit nil, :class => 'waves-effect waves-light btn' %>
+        <button class="btn-large waves-effect waves-light right" type="submit" name="action"> Place Order!</button>
+     
       <%= link_to 'Cancel', items_path, :class => 'waves-effect waves-light btn' %>
     </div>
 
 <% end %>
+
+</div>

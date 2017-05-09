@@ -24,6 +24,13 @@ class SchoolsController < ApplicationController
     end
 
     def destroy
+
+        if @school.destroy
+          redirect_to :back, notice: "Succcessfully removed #{@school.name} from the system."
+        else
+          redirect_to :back, notice: "Cannot remove #{@school.name} from the system because orders have been placed. #{@school.name} has been deactivated instead."
+
+        end
     end
 
     private

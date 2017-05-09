@@ -35,8 +35,6 @@ class OrdersController < ApplicationController
     @date = @payment_receipt[2][1]
     @card = @payment_receipt[3][1]
     
-
-
   end
 
 

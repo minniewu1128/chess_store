@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  get 'errors/not_found'
+
+  get 'errors/internal_server_error'
+
   # Routes for main resources
   resources :items
   resources :purchases
@@ -51,6 +55,10 @@ Rails.application.routes.draw do
 
   #Reorder List
   get 'reorder_list' => 'items#reorder_list', as: :reorder_list
+
+  #Errors
+  match "/404", :to => "errors#not_found", :via => :all
+  match "/500", :to => "errors#internal_server_error", :via => :all
   
   # Set the root url
   root :to => 'home#home'  

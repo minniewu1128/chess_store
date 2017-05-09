@@ -1,4 +1,5 @@
 
+
 <% if logged_in? && (current_user.role?(:admin) || current_user.role?(:manager) ) %>
     <%= render partial: "partials/index_structure", locals: {model_name: "item", 
                                                          primary: "active_items", 
@@ -56,3 +57,4 @@
     
                                       
 <% end %>
+

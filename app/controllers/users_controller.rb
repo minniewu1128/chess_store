@@ -37,10 +37,12 @@ class UsersController < ApplicationController
     if @user.save 
       if !logged_in? || (!current_user.role?(:admin) && !current_user.role?(:manager))
         session[:user_id] = @user.id
+        redirect_to home_path, notice: "#{@user.first_name}, you have now signed up as #{@user.username}."
+      else
+        redirect_to home_path, notice: "Successfully added new user: #{@user.username}."
       end
-      redirect_to home_path, notice: "Successfully created #{@user.proper_name}."
     else
-      render action: 'new'
+      render action: 'new' 
     end
   end
 

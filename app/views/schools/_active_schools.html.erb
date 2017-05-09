@@ -1,15 +1,17 @@
 <% unless @active_schools.nil? || @active_schools.empty? %>
-  <h3 class = "teal-text text-darken-2"> Active Schools </h3>
-  <table class="highlight">
+  <h2 class = "teal-text text-darken-2"> Active Schools </h2>
+  <table class="bordered">
     <thead>
       <tr>
-        <th width="500">Name</th>
+        <th width="100">Name</th>
+        <th width = "250"> Address </th>
       </tr>
     </thead>
     <tbody>
       <% @active_schools.each do |school| %>
         <tr>
           <td><%= link_to school.name, school_path(school) %></td>
+          <td> <%= render partial: 'partials/address_info', locals: {school: school} %> </td>
         </tr>
       <% end %>
     </tbody>

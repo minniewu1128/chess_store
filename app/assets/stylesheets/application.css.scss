@@ -21,6 +21,15 @@
 
 
 
+table.bordered thead {
+    border-bottom: 1px solid #8d6e63 !important;
+}
+
+table.bordered tr {
+    border-bottom: 1px solid #8d6e63 !important;
+}
+
+
 .outermost_cart {
     background-color: #6d4c41;
 }
@@ -66,11 +75,11 @@ ul.tabs {
 }
 
 h1 {
-    font-family: 'Satisfy', cursive;
+    font-family: 'Arima Madurai', cursive;
 }
 
 h2 {
-    font-family: 'Belleza', sans-serif;
+    font-family: 'Belleza', cursive;
 }
 
 h3 {
