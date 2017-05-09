@@ -1,6 +1,7 @@
 <% unless items.nil? || items.empty? %>
-  <h5><%= item_type.capitalize %></h5>
-  <table class="table table-striped">
+  <blockquote class = 'card-panel side'>
+  <h4 class = 'brown-text text-darken-2'><%= item_type.capitalize %></h5>
+  <table class="table bordered">
     <thead>
       <tr>
         <th width="300">Name</th>
@@ -18,4 +19,5 @@
       <% end %>
     </tbody>
   </table>
+   </blockquote>
 <% end %>

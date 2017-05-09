@@ -2,7 +2,8 @@
 
 
 <div id="shipper-home" class="container">
-<h3 class = "teal-text text-darken-3">Shipping List</h3>
+
+<h2 class = "teal-text text-darken-2">Shipping List</h2>
   <ul class="collapsible popout" data-collapsible="accordion">
 
   <% unless @orders_to_ship.nil? || @orders_to_ship.empty?%>
@@ -27,6 +28,9 @@
         </li>
       
       <%end%>
+
+    <%else%>
+      <h5> All pending orders have been shipped! </h5>
     <%end%>
   
   </ul>

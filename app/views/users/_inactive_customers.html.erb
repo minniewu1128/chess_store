@@ -1,16 +1,17 @@
-<% unless @inactive_users.nil? || @inactive_users.empty? %>
-  <h2 class = "teal-text text-darken-2"> Inactive Users </h2>
-  <table class="bordered">
+<% unless @inactive_customers.nil? || @inactive_customers.empty? %>
+  <h4 class = "brown-text text-darken-2"> Inactive Customers </h4>
+  <table>
     <thead>
       <tr>
-        <th">Username</th>
+        <th>Username</th>
+        <th>Name</th>
       </tr>
     </thead>
     <tbody>
       <% @inactive_users.each do |user| %>
         <tr>
           <td><%= link_to user.username, user_path(user) %></td>
-          <td> <%= user.role %> </td>
+          <td> <%= user.name %> </td>
         </tr>
       <% end %>
     </tbody>

@@ -17,12 +17,12 @@
   
   <div id="all" class="col s12">
     
-    <h3 class = "teal-text text-darken-2">All Orders</h3>
+    <h2 class = "teal-text text-darken-2">All Orders</h2>
     <%= render partial: "partials/order_accordion_structure", locals: {orders: @orders} %>
   </div>
   
   <div id="unshipped" class="col s12">
-    <h3 class = "teal-text text-darken-2"> Unshipped Orders </h3>
+    <h2 class = "teal-text text-darken-2"> Unshipped Orders </h2>
     <%= render partial: "partials/order_accordion_structure",locals: {orders: @unshipped_orders} %>
 
   </div>

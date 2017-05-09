@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def index
     @active_users = User.active.alphabetical.paginate(:page => params[:page]).per_page(20)
     @active_employees = User.employees.active.alphabetical.paginate(:page => params[:page]).per_page(10)
-    @active_customers = User.cusstomers.active.alphabetical.paginate(:page => params[:page]).per_page(10)
+    @active_customers = User.customers.active.alphabetical.paginate(:page => params[:page]).per_page(10)
     @inactive_users = User.inactive.alphabetical.paginate(:page => params[:page]).per_page(10)
     @inactive_employees = User.employees.inactive.alphabetical.paginate(:page => params[:page]).per_page(10)
     @inactive_customers = User.customers.inactive.alphabetical.paginate(:page=>params[:page]).per_page(10)
@@ -18,16 +18,16 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    set_user
   end
 
   def show
-    @user = current_user
+    set_user
   end
 
   def user_all_orders
-    @orders = current_user.orders.chronological
-    @unshipped = current_user.orders.not_shipped.chronological
+    @orders = @user.orders.chronological
+    @unshipped = @user.orders.not_shipped.chronological
   end
 
   #different when admin is editng user and when user is editing themself
@@ -52,6 +52,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    set_user
     if @user.update(user_params)
       redirect_to user_path(@user), notice: "Successfully updated #{@user.username}."
     else

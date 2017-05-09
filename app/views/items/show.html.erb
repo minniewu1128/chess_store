@@ -1,6 +1,9 @@
 <div class="row">
-  <div class="col s8 card-panel">
+  <div class="col s8">
+
+  <blockquote class="main card-panel">
     <%= render :partial => "item_details" %>
+  </blockquote>
   </div>
 
 
@@ -9,21 +12,21 @@
   <div class="col s4">
 
     
-    <div class = 'card-panel' >
-    <blockquote>
+     
+    <blockquote class = 'side card-panel'>
         <%= render :partial => "similar_items" unless @similar_items.empty?%>
-            </blockquote>
-    </div>
+    </blockquote>
+    
 
     
     <% if logged_in? && (current_user.role?(:manager)||current_user.role?(:admin))%>
 
-     <blockquote>
+     <blockquote class = 'side card-panel'>
         <%= render :partial => "price_history" unless @price_history.empty?%>
     </blockquote>
 
 
-    <blockquote>
+    <blockquote class ='side card-panel'>
     <%= render partial: 'manufacturer_price_history' unless @manufacturer_price_history.empty? %>
         <%end%>
     </blockquote>

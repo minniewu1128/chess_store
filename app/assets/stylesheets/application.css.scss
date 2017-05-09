@@ -57,11 +57,13 @@ table.bordered tr {
 }
 
 
-blockquote {
-    border-left: 3px solid #795548 !important;
+blockquote.side {
+    border-left: 5px solid #795548 !important;
 }
 
-
+blockquote.main {
+    border-left: 8px solid #00796b  !important;
+}
 
 
 
