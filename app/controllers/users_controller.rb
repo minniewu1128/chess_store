@@ -5,7 +5,12 @@ class UsersController < ApplicationController
   authorize_resource
     
   def index
-    @users = User.alphabetical.paginate(:page => params[:page]).per_page(10)
+    @active_users = User.active.alphabetical.paginate(:page => params[:page]).per_page(20)
+    @active_employees = User.employees.active.alphabetical.paginate(:page => params[:page]).per_page(10)
+    @active_customers = User.cusstomers.active.alphabetical.paginate(:page => params[:page]).per_page(10)
+    @inactive_users = User.inactive.alphabetical.paginate(:page => params[:page]).per_page(10)
+    @inactive_employees = User.employees.inactive.alphabetical.paginate(:page => params[:page]).per_page(10)
+    @inactive_customers = User.customers.inactive.alphabetical.paginate(:page=>params[:page]).per_page(10)
   end
 
   def new
@@ -25,7 +30,7 @@ class UsersController < ApplicationController
     @unshipped = current_user.orders.not_shipped.chronological
   end
 
-  #different when admin is ediitng user and when user is editing themself
+  #different when admin is editng user and when user is editing themself
 
   def create
     @user = User.new(user_params)

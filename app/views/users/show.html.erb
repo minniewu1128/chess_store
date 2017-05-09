@@ -3,7 +3,10 @@
 <div class = 'row'>
   <div class = 'col s8 left'>
 
-    <%= render partial: "profile", locals: {user: @user} %>
+  <%= current_user.id %>
+    <% if logged_in? && (params[:id] == current_user.id.to_s) %>
+      <%= render partial: "profile", locals: {user: @user} %>
+    <%end%>
     
     <% if  current_user.role?(:customer) %>
       <%= render partial: "customer_orders", locals: {user: @user} %>
