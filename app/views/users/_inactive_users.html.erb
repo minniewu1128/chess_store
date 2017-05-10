@@ -1,19 +1,24 @@
+<blockquote class = "card-panel side">
+
 <% unless @inactive_users.nil? || @inactive_users.empty? %>
-  <h2 class = "teal-text text-darken-2"> Inactive Users </h2>
+  <h4 class = "brown-text text-darken-2"> Inactive Employees </h4>
   <table class="bordered">
     <thead>
       <tr>
-        <th">Username</th>
+        <th width="100">Username</th>
       </tr>
     </thead>
     <tbody>
-      <% @inactive_users.each do |user| %>
+      <% @inactive_employees.each do |user| %>
         <tr>
           <td><%= link_to user.username, user_path(user) %></td>
-          <td> <%= user.role %> </td>
         </tr>
       <% end %>
     </tbody>
   </table>
+
+<% else %>
+  <h5>All users are currently active.</h5>
 <% end %>
 
+</blockquote>

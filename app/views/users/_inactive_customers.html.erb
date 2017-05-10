@@ -1,3 +1,4 @@
+<blockquote class = "card-panel side"> 
 <% unless @inactive_customers.nil? || @inactive_customers.empty? %>
   <h4 class = "brown-text text-darken-2"> Inactive Customers </h4>
   <table>
@@ -7,8 +8,9 @@
         <th>Name</th>
       </tr>
     </thead>
+    
     <tbody>
-      <% @inactive_users.each do |user| %>
+      <% @inactive_customers.each do |user| %>
         <tr>
           <td><%= link_to user.username, user_path(user) %></td>
           <td> <%= user.name %> </td>
@@ -16,5 +18,11 @@
       <% end %>
     </tbody>
   </table>
+
+  <% else %>
+  <h5>All customers are currently active.</h5>
+
+
 <% end %>
+</blockquote>
 
