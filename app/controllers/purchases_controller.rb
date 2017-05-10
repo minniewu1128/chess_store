@@ -10,6 +10,8 @@ class PurchasesController < ApplicationController
     @purchase = Purchase.new
   end
 
+
+
   def create
     
     @purchase = Purchase.new(purchase_params)

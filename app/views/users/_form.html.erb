@@ -1,12 +1,12 @@
-<div class = "col s8">
-
+<div class = "col s9">
+<blockquote class = "card-panel main">
 <%= simple_form_for @user, html: { class: 'form-horizontal', multipart: true } do |f| %>
     
     <%if !logged_in?%>
-      <h3 class = "teal-text text-darken-2">Sign Up</h3>
+      <h2 class = "teal-text text-darken-2">Sign Up</h2>
       <br/>
 
-      <h5>Note: Please keep in mind that we only ship to schools, not to personal addresses.</h5>
+      <h5>Note: Currently we only ship to schools, not personal addresses.</h5>
     <% else %>
       <h3>Add a New User</h3>
     <% end %>
@@ -68,3 +68,4 @@
 <% end %>
 
 </div>
+</blockquote>

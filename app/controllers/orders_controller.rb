@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   include ChessStoreHelpers::Cart
   include ChessStoreHelpers::Shipping
   before_action :check_login
+  authorize_resource
   before_action :set_order, only: [:show, :edit, :update, :destroy, :payment_confirm]
   require 'base64'
 
@@ -102,8 +103,8 @@ class OrdersController < ApplicationController
       @list = get_list_of_items_in_cart
       @cost = calculate_cart_items_cost
       @shipping_cost = calculate_cart_shipping
-      format.js
-      #redirect_to cart_path 
+      return format.js
+  
     end
 
 

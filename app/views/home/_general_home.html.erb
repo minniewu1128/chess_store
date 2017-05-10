@@ -1,43 +1,66 @@
-
-
-
 <div class="parallax-container">
     <div class="parallax">
       <%=image_tag 'chess_strategy.jpeg' %>
     </div>
   </div>
-  <div class="section white">
-    <div class="row container ">
-      <h1 class="header  teal-text text-darken-2">A&M Chess</h1>
-      <h4 class="grey-text text-darken-3 lighten-3">Welcome to Alex and Mark's Chess Store!</h4>
-        <div class="card sticky-action">
-        <div class="card-image waves-effect waves-block waves-light">
-            <%= image_tag "Chess.jpg", class: "activator"%>
-            
-        </div>
-        <div class="card-content">
-           <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-            <p><a href="#">This is a link</a></p>
-      </div>
+
+<div class="section white container">
+    <div class="row">
+      <h1 class="header teal-text text-darken-2"><b>A&M Chess</b></h1>
+      <h4 class="grey-text text-darken-3 lighten-3">Welcome to Alex and Mark's Chess Store! We are an online supplier that ships to schools. </h4>
+
+
+      <br/> <br/> <br/> <br/> <br/>
       
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-        <p>Here is some more information about this product that is only revealed once clicked on.</p>
-      </div>
-    </div>
-    </div>
+    <div class = "row">
+
+      <h3 class = "teal-text text-darken-2"> Check out our best selling products! </h3>
+      <% unless @popular_limited.nil? || @popular_limited.empty? %>
+
+
+      <% @popular_limited.first(2).each do |item,count| %>
+        <div class="col s6 m6">
+          <div class="card horizontal">
+            <div class="card-image">
+                <% if item.photo_url.nil? %>
+                  <%=image_tag("Chess.jpg")%>
+                <% else %>
+                  <%= image_tag(item.photo_url) %>
+                <% end %>
+              
+            </div>
+          
+          <div class = "card-stacked">
+            <div class="card-content">
+              
+              <h5 class = 'brown-text'><%= item.name %></h5>
+
+              <p><%= number_to_currency item.current_price %></p>
+                
+                <%= link_to('Details', item_path(item))%> 
+        
+            
+         
+
+              
+              
+           
+        
+          </div>
+          </div>
+          </div>
+        </div>
+    <% end %> 
+
+  <%end %>
+
+  </div>
   </div>
   <div class="parallax-container">
     <div class="parallax"><%=image_tag 'chess_strategy.jpeg'%></div>
   </div>
 
-		<p>
-			Featured Items
-		</p>
-		
-    <div class="col s12 m6">
 
-	</div>
 	</div>
 	
 

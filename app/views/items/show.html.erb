@@ -32,8 +32,9 @@
     </blockquote>
 
 
-
+    <%if logged_in? && (current_user.role?(:manager) || current_user.role?(:admin))%>
     <%= render partial: 'new_price_link' %>
+    <%end%>
     
 
   </div>
