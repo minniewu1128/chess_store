@@ -1,8 +1,9 @@
 class SchoolsController < ApplicationController
-    authorize_resource
+   
     before_action :set_school, only: [:show, :edit, :update, :destroy]
 
     before_action :check_login, except: [:index, :show]
+     authorize_resource
 
     def index
         @active_schools = School.active.alphabetical.paginate(:page => params[:page]).per_page(100)

@@ -17,6 +17,11 @@ class Ability
         can :read, :all
         #how to write read emmployee data
         #can do all three things same as manage?
+        can :manage, Order
+
+        can :cart, Order
+
+        can :add_to_cart, Order
 
         can :manage, School
         can :manage, Item

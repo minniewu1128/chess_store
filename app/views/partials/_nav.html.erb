@@ -75,7 +75,10 @@
               <%= link_to "Users", users_path %>
             </li>
           
-
+                        <li><%= link_to cart_path do%>
+              <i class="material-icons left">shopping_cart</i>Cart <%=@cart_items.size%>
+     
+              <%end%>
 
           <%end%>
         

@@ -54,6 +54,11 @@
                 <%= render partial: "partials/object_options", locals: {model_name: "item", object: @item}  %>
                 <%end%>
 
+                   <%= link_to(new_purchase_path, class: 'waves-effect waves-light btn right') do %>
+            <i class="material-icons">add</i>     
+            <% end %>
+
+
 
     
                 </blockquote>
