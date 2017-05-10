@@ -1,7 +1,31 @@
+<div class="row">
+  <div class="col s8">
+
+
+    <%= render :partial => "active_schools" %>
+  </div>
 
 
 
-<%= render partial: "partials/index_structure", locals: {model_name: "school", 
-                                                         primary: "active_schools", 
-                                                         secondary: nil ,
-                                                         sidebar: "inactive_schools"} %>
+ 
+  <div class="col s4">
+
+    
+    <%= render :partial => "partials/toolbox", locals: {model_name: "school", object: @school} %>
+    
+    <%= render :partial => "inactive_schools" %>
+
+    
+
+   
+
+
+
+    
+
+  </div>
+</div>
+
+<!-- Add buttons to list all, edit project or destroy object -->
+
+

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
 
   before_action :check_login, except: [:new, :create]
-  authorize_resource
+  load_and_authorize_resource
     
   def index
     @active_users = User.active.alphabetical.paginate(:page => params[:page]).per_page(20)
@@ -26,6 +26,7 @@ class UsersController < ApplicationController
   end
 
   def user_all_orders
+    set_user
     @orders = @user.orders.chronological
     @unshipped = @user.orders.not_shipped.chronological
   end

@@ -1,5 +1,10 @@
-<blockquote class = "main card-panel">
+
 <div id="recent_purchases">
+<blockquote class = "main card-panel">
+   <%= link_to(new_purchase_path, class: 'waves-effect waves-light btn-floating  btn-large right') do %>
+            <i class="material-icons">add</i>     
+            <% end %>
+
 <% if @purchases.empty? %>
   <h4>There are no purchases at this time.</h4>
 <% else %>
@@ -32,3 +37,4 @@
 <p>&nbsp;</p>
 </div>
 </blockquote>
+</div>

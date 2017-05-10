@@ -21,7 +21,7 @@ class Ability
         can :manage, School
         can :manage, Item
         can [:create, :update, :read], User do |u|
-            !u.role? :customer
+            !u.role?(:customer) && !u.role?(:admin)
         end
 
         can :read, ItemPrice
@@ -34,6 +34,7 @@ class Ability
         can :manage, Purchase
 
     elsif user.role? :shipper
+
         #can read personal information, edit name, phone, email and password (cannot edit username)
         can :read, Item
 
@@ -57,8 +58,13 @@ class Ability
             u.id == user.id
         end
 
+        can :read, User do |u|
+            u.id == user.id
+        end
+
     elsif user.role? :customer
 
+        can :create, School
 
         can :index_pieces, Item
 

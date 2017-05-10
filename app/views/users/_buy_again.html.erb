@@ -3,34 +3,44 @@
   <h4 class = "teal-text text-darken-2">Buy Again:</h4>
   <% buy_again = current_user.orders.chronological.first.order_items.map{|oi| oi.item} %>
   <%buy_again.each do |item|%>
-    <div class="col s12">
-      <div class="card hoverable">
-        <div class="card-image waves-effect waves-block waves-light">
-          <% if item.photo_url.nil? %>
-            <%=image_tag("Chess.jpg", class: "activator")%>
-          <% else %>
-            <%= image_tag(item.photo_url, class: "activator") %><
-          <% end %>
-                  
-        </div>
-                
-        <div class="card-content">
-                  
-          <span class="activator grey-text text-darken-4"><h6><%= item.name %></h6>
+            <div class="col 12">
+          <div class="card horizontal">
+            <div class="card-image">
+                <% if item.photo_url.nil? %>
+                  <%=image_tag("Chess.jpg")%>
+                <% else %>
+                  <%= image_tag(item.photo_url) %>
+                <% end %>
+              
+            </div>
+          
+          <div class = "card-stacked">
+            <div class="card-content">
+              
+              <h5 class = 'brown-text'><%= item.name %></h5>
 
-            <i class="material-icons right">more_vert</i></span>
-                    
-              <p> <%= number_to_currency item.current_price %> </p>
-                    
-              <%= link_to('Full Details', item_path(item))%> 
-     
-                <%= form_tag add_to_cart_path, :method => 'get', html: { class: 'form-horizontal' } do %>
+              <p><%= number_to_currency item.current_price %></p>
+                
+                <%= link_to('Details', item_path(item))%> 
+        
+            
+         
+
+                <%= form_tag add_to_cart_path, :method => 'get', html: { class: 'form-horizontal' },remote:true do %>
+                  
+                  <%= label_tag "add_to_cart[quantity]", 'Quantity' %>
                   <%= text_field :add_to_cart, :quantity %>
-                  <%= hidden_field :add_to_cart, :item_id, value: item.id %> 
-                    
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Add to Cart
-                      <i class="material-icons right">add_shopping_cart</i>
-                    </button>
+
+                
+          
+                <%= hidden_field :add_to_cart, :item_id, value: item.id %> 
+
+                <button class="btn waves-effect waves-light" type="submit" name="action" data-remote='true'>Add to Cart
+                  <i class="material-icons right">add_shopping_cart</i>
+                </button>
+
+              
+
 
                 <%end%>
         </div>

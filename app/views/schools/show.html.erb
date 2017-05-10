@@ -1,5 +1,8 @@
+
+
 <div class="row col s8">
-  
+
+<blockquote class = 'card-panel main'>
     <h3 class = 'teal-text text-darken-2' ><%= @school.name %></h3>
 
       <table class = 'bordered'>
@@ -49,15 +52,11 @@
       </table>
 
   <br/> <br/>
+</blockquote>
   <%= render partial: "partials/object_options", locals: {model_name: "school", object: @school}  %>
 
 
  
-
-
-
-   
-
 
 </div>
 

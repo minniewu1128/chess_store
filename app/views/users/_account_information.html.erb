@@ -1,10 +1,13 @@
 <%= image_tag 'avatar_not_found.jpg', class: 'circle left', height: '100', width: '100' %>
     
 <div class = row >
+
+    <% if logged_in? && (current_user.role?(:admin) || (current_user.role?(:manager) &&(user.role == 'manager' || user.role == 'shipper') ) ) %>
               <%= link_to(edit_user_path(user), class: 'waves-effect waves-light btn-floating  btn-large right') do %>
             <i class="material-icons">mode_edit</i>     
             <% end %>
-    <h2 class = "teal-text text-darken-2"> <%= user.first_name %>'s Profile </h2> 
+    <% end %>
+    <h2 class = "teal-text text-darken-2"> <%= user.first_name %>'s Account</h2> 
 
 
 </div>

@@ -1,0 +1,26 @@
+<%= simple_form_for @school, html: { class: 'form-horizontal', multipart: true } do |f| %>
+ 
+    <h2 class = "teal-text text-darken2"><%= controller.action_name.capitalize %> School </h2>
+
+        <%= f.input :name, label: "Name" %>
+        <%= f.input :street_1, label: "Street Address Line 1" %>
+        <%= f.input :street_2, label: "Street Address Line 2" %>
+        <%= f.input :city, label: "City"%>
+        <%= f.input :state, label: "State" %>
+        <%= f.input :zip, label: "Zip" %>
+        <%= f.input_field :active, as: :boolean, boolean_style: :inline %>
+            
+          <%= f.label :active %>
+    <br/>
+
+   
+
+  <br/> 
+
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'waves-effect waves-light btn' %>
+      <%= link_to 'Cancel', schools_path, :class => 'button alert radius' %>
+    </div>
+
+<% end %>

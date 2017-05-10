@@ -12,6 +12,7 @@
     <ul class="tabs">
       <li class="tab col s3"><a href="#all">All</a></li>
       <li class="tab col s3"><a href="#unshipped">Unshipped</a></li>
+      
     </ul>
   </div>
   
@@ -19,6 +20,7 @@
     
     <h2 class = "teal-text text-darken-2">All Orders</h2>
     <%= render partial: "partials/order_accordion_structure", locals: {orders: @orders} %>
+    <span class="smtext"><%= will_paginate @orders, renderer: MaterializePagination::Rails %></span>
   </div>
   
   <div id="unshipped" class="col s12">
@@ -26,7 +28,9 @@
     <%= render partial: "partials/order_accordion_structure",locals: {orders: @unshipped_orders} %>
 
   </div>
-  <span class="smtext"><%= will_paginate @orders, renderer: MaterializePagination::Rails %></span>
+
+
+  
 </div>
 
   

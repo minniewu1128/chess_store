@@ -13,8 +13,7 @@
           <div class = "right-align"><b>Date: </b> <%=order.date.strftime("%b, %d %Y")%> </div>
 
           
-          <div class = "right-align"> <b>Address:</b>
-            <%= render partial: 'partials/address_info', locals: {school: order.school} %></div>
+
           </div>
 
           <div class="collapsible-body">
@@ -28,6 +27,8 @@
               <div class = 'left-align'><b>Ordered By:</b>  <%= order.user.proper_name %>          </div>
 
               <div class = "left-align"> <b> School: </b> <%=order.school.name%> </div>
+              <div class = "right-align"> <b>Address:</b>
+                <%= render partial: 'partials/address_info', locals: {school: order.school} %></div>
 
    
               <div class = 'left-align'><b>Paid? </b> <%= @paid_orders.include?(order) ? ' Yes': ' No' %> </div>

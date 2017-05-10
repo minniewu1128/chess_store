@@ -1,10 +1,10 @@
-
+<blockquote class = "card-panel side">
 <% if @inactive_schools.nil? || @inactive_schools.empty? %>
   <h5> All schools in the system are active currently. </h5>
 <% end %>
 
 <% unless @inactive_schools.nil? || @inactive_schools.empty? %>
-  <blockquote class = "card-panel side">
+  >
   <h4 class = 'brown-text text-darken-2'> Inactive Schools </h4>
   <table class="bordered">
     <thead>

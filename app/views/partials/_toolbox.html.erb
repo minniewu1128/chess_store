@@ -1,0 +1,13 @@
+  
+<blockquote class= "card-panel side">
+
+  <% opt = "#{object.respond_to?(:name) ? object.name : model_name.capitalize }" %>
+
+  <div class="form-actions">
+    <%= link_to(eval("new_#{model_name}_path"), class: 'waves-effect waves-light btn') do %>
+      &nbsp;Add A New <%= model_name.capitalize %>
+    <% end %>
+
+  </div>
+
+</blockquote>

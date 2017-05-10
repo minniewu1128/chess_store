@@ -5,7 +5,7 @@ class SchoolsController < ApplicationController
     before_action :check_login, except: [:index, :show]
 
     def index
-        @active_schools = School.active.alphabetical.paginate(:page => params[:page]).per_page(20)
+        @active_schools = School.active.alphabetical.paginate(:page => params[:page]).per_page(100)
         @inactive_schools = School.inactive.alphabetical.paginate(:page => params[:page]).per_page(20)
     end
 
@@ -15,6 +15,13 @@ class SchoolsController < ApplicationController
 
     def create
         @school = School.new(school_params)
+
+        if @school.save!
+            redirect_to school_path(@school), notice: "Successfully created #{@school.name}."
+        else
+            render action: 'new'
+        end
+
     end
 
     def show
@@ -22,6 +29,16 @@ class SchoolsController < ApplicationController
 
     def edit
     end
+
+    def update
+        if @school.update(school_params)
+            redirect_to school_path(@school), notice: "Successfully updated #{@school.name}."
+        else
+        render action: 'edit'
+        end
+    end
+
+    
 
     def destroy
 
@@ -40,7 +57,7 @@ class SchoolsController < ApplicationController
     end
     
     def school_params
-    params.require(:school).permit(:name, :street_1, :street_2, :city, :state, :zip, :min_grade, :max_grade)
+    params.require(:school).permit(:name, :street_1, :street_2, :city, :state, :zip, :min_grade, :max_grade, :active)
     end
 
 
