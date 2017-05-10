@@ -99,7 +99,8 @@ class Ability
 
         end
 
-        
+        can :add_to_cart, Order
+        can :cart, Order
         can :create, Order
         can :destroy, Order do |o|
             all_orders = Order.all.map(&:id)

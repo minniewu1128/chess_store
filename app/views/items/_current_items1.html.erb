@@ -8,7 +8,7 @@
           <div class="card horizontal">
             <div class="card-image">
                 <% if item.photo_url.nil? %>
-                  <%=image_tag("Chess.jpg")%>
+                  <%=image_tag("img_not_available.png")%>
                 <% else %>
                   <%= image_tag(item.photo_url) %>
                 <% end %>

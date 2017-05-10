@@ -35,10 +35,31 @@
     <%if logged_in? && (current_user.role?(:manager) || current_user.role?(:admin))%>
     <%= render partial: 'new_price_link' %>
     <%end%>
-    
 
+    <blockquote class = 'side card-panel'>
+             <%= form_tag add_to_cart_path, :method => 'get', html: { class: 'form-horizontal' } do %>
+                  
+                  <%= label_tag "add_to_cart[quantity]", 'Quantity' %>
+                  <%= text_field :add_to_cart, :quantity %>
+
+                
+          
+                <%= hidden_field :add_to_cart, :item_id, value: @item.id %> 
+
+                <button class="btn waves-effect waves-light" type="submit" name="action" data-remote='true'>Add to Cart
+                  <i class="material-icons right">add_shopping_cart</i>
+                </button>
+
+                 <br/> <br/>
+                <%= render partial: "partials/object_options", locals: {model_name: "item", object: @item}  %>
+                <%end%>
+
+
+    
+                </blockquote>
   </div>
 </div>
 
 <!-- Add buttons to list all, edit project or destroy object -->
-<%= render partial: "partials/object_options", locals: {model_name: "item", object: @item}  %>
+
+       
