@@ -38,6 +38,8 @@ class Ability
         end
         can :manage, Purchase
 
+        can :payment_confirm, Order
+
     elsif user.role? :shipper
 
         #can read personal information, edit name, phone, email and password (cannot edit username)
@@ -67,7 +69,17 @@ class Ability
             u.id == user.id
         end
 
+        can :payment_confirm, Order
+
     elsif user.role? :customer
+
+        can :payment_confirm, Order
+
+        can :cart, Order
+
+
+
+        can :checkout, Order
 
         can :create, School
 

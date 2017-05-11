@@ -18,7 +18,7 @@
             <% if order_item.item.photo_url.nil? || order_item.item.photo_url.empty? %>
             <%= image_tag('img_not_available.png', height: '50', width: '50', class: 'left-align')  %> 
           <%else%>
-             <%= image_tag(order_item.photo_url, height: '50', width: '50', class: 'left')  %> 
+             <%= image_tag(order_item.item.photo_url, height: '50', width: '50', class: 'left')  %> 
           <%end %> 
           <br/>
           <%= link_to order_item.item.name, item_path(order_item.item) %></td>
